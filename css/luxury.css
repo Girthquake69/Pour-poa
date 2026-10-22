@@ -1,0 +1,614 @@
+/* Pour Poa | luxury layer (generated header: filigree masks) */
+:root {
+  --fil-tl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 68' fill='none' stroke='black' stroke-width='1.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='translate(0 0)'%3E%3Cpath d='M3 62V24C3 12 12 3 24 3H62'/%3E%3Cpath d='M9 62V28C9 17.5 17.5 9 28 9H62' stroke-width='.6' opacity='.6'/%3E%3Cpath d='M18 18c0-5.5 5-8 8.5-5.5 3 2.2 1.5 6.5-1.5 6.5-2.4 0-3-2.6-1.4-3.4' stroke-width='.9'/%3E%3Cpath d='M65 .5l2.5 2.5-2.5 2.5-2.5-2.5zM3 62.5l2.5 2.5-2.5 2.5-2.5-2.5z' fill='black' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+  --fil-tr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 68' fill='none' stroke='black' stroke-width='1.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='matrix(-1 0 0 1 68 0)'%3E%3Cpath d='M3 62V24C3 12 12 3 24 3H62'/%3E%3Cpath d='M9 62V28C9 17.5 17.5 9 28 9H62' stroke-width='.6' opacity='.6'/%3E%3Cpath d='M18 18c0-5.5 5-8 8.5-5.5 3 2.2 1.5 6.5-1.5 6.5-2.4 0-3-2.6-1.4-3.4' stroke-width='.9'/%3E%3Cpath d='M65 .5l2.5 2.5-2.5 2.5-2.5-2.5zM3 62.5l2.5 2.5-2.5 2.5-2.5-2.5z' fill='black' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+  --fil-bl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 68' fill='none' stroke='black' stroke-width='1.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='matrix(1 0 0 -1 0 68)'%3E%3Cpath d='M3 62V24C3 12 12 3 24 3H62'/%3E%3Cpath d='M9 62V28C9 17.5 17.5 9 28 9H62' stroke-width='.6' opacity='.6'/%3E%3Cpath d='M18 18c0-5.5 5-8 8.5-5.5 3 2.2 1.5 6.5-1.5 6.5-2.4 0-3-2.6-1.4-3.4' stroke-width='.9'/%3E%3Cpath d='M65 .5l2.5 2.5-2.5 2.5-2.5-2.5zM3 62.5l2.5 2.5-2.5 2.5-2.5-2.5z' fill='black' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+  --fil-br: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 68' fill='none' stroke='black' stroke-width='1.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg transform='matrix(-1 0 0 -1 68 68)'%3E%3Cpath d='M3 62V24C3 12 12 3 24 3H62'/%3E%3Cpath d='M9 62V28C9 17.5 17.5 9 28 9H62' stroke-width='.6' opacity='.6'/%3E%3Cpath d='M18 18c0-5.5 5-8 8.5-5.5 3 2.2 1.5 6.5-1.5 6.5-2.4 0-3-2.6-1.4-3.4' stroke-width='.9'/%3E%3Cpath d='M65 .5l2.5 2.5-2.5 2.5-2.5-2.5zM3 62.5l2.5 2.5-2.5 2.5-2.5-2.5z' fill='black' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
+  --fil-divider: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 14' fill='none' stroke='black' stroke-width='1' stroke-linecap='round'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='2' y1='0' x2='60' y2='0'%3E%3Cstop offset='0' stop-opacity='0'/%3E%3Cstop offset='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='0' x2='158' y2='0'%3E%3Cstop offset='0'/%3E%3Cstop offset='1' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M2 7H60' stroke='url(%23a)'/%3E%3Cpath d='M100 7H158' stroke='url(%23b)'/%3E%3Cpath d='M80 1.5L85.5 7 80 12.5 74.5 7z' fill='black' stroke='none'/%3E%3Cpath d='M68 7c-2.5-4-6-4-8 0M92 7c2.5-4 6-4 8 0' stroke-width='.9'/%3E%3Ccircle cx='68' cy='7' r='1.3' fill='black' stroke='none'/%3E%3Ccircle cx='92' cy='7' r='1.3' fill='black' stroke='none'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   Pour Poa | luxury editorial layer
+   Loads AFTER css/style.css and the inline page styles, so it wins ties.
+   1 Tokens  2 Filigree + ornament  3 Buttons  4 Type + radii polish
+   5 Hero trust  6 Craft/Service polish  7 Menu + closing CTA
+   8 Bespoke (redesign)  9 Estimator  10 Feedback (redesign) + modal
+   11 Quote form  12 Footer + WhatsApp float  13 Kinetic reveals
+   ========================================================================== */
+
+/* ---------- 1. Tokens ---------- */
+
+:root {
+  --emerald: #0B3020;
+  --forest: #0B3020;
+  --forest-deep: #071F15;
+  --paper: #F9F8F3;
+  --cream: #F9F8F3;
+  --cream-lux: #F9F8F3;
+  --cream-deep: #F1ECDD;
+  --cream-card: #FCFBF7;
+  --gold: #C5A059;
+  --gold-deep: #8F6B1F;
+  --r-panel: 18px;
+  --r-card: 14px;
+  --r-ctl: 10px;
+  --ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- 2. Filigree corners + divider ornament ----------
+   Corners and the divider are alpha masks, so one SVG takes any colour.
+   Set --fil-color / --fil-size / --fil-inset on the element. */
+
+.filigree {
+  position: relative;
+  isolation: isolate;
+}
+
+.filigree::after {
+  content: '';
+  position: absolute;
+  inset: var(--fil-inset, 0.85rem);
+  z-index: 0;
+  pointer-events: none;
+  background: var(--fil-color, var(--gold));
+  -webkit-mask:
+    var(--fil-tl) top left / var(--fil-size, 3.5rem) var(--fil-size, 3.5rem) no-repeat,
+    var(--fil-tr) top right / var(--fil-size, 3.5rem) var(--fil-size, 3.5rem) no-repeat,
+    var(--fil-bl) bottom left / var(--fil-size, 3.5rem) var(--fil-size, 3.5rem) no-repeat,
+    var(--fil-br) bottom right / var(--fil-size, 3.5rem) var(--fil-size, 3.5rem) no-repeat;
+  mask:
+    var(--fil-tl) top left / var(--fil-size, 3.5rem) var(--fil-size, 3.5rem) no-repeat,
+    var(--fil-tr) top right / var(--fil-size, 3.5rem) var(--fil-size, 3.5rem) no-repeat,
+    var(--fil-bl) bottom left / var(--fil-size, 3.5rem) var(--fil-size, 3.5rem) no-repeat,
+    var(--fil-br) bottom right / var(--fil-size, 3.5rem) var(--fil-size, 3.5rem) no-repeat;
+}
+
+.ornament {
+  display: block;
+  width: 10rem;
+  height: 0.875rem;
+  background: var(--ornament-color, var(--gold-deep));
+  -webkit-mask: var(--fil-divider) center / contain no-repeat;
+  mask: var(--fil-divider) center / contain no-repeat;
+}
+
+/* ---------- 3. Buttons: gold on dark, forest on light ---------- */
+
+.btn {
+  border-radius: var(--r-ctl);
+}
+
+.btn-primary {
+  --btn-bg: var(--gold);
+  --btn-fg: var(--forest-deep);
+  --btn-border: var(--gold);
+  --btn-bg-hover: var(--champagne);
+  --btn-fg-hover: var(--forest-deep);
+}
+
+:is(.section-light, .modal, .quote-card) .btn-primary {
+  --btn-bg: var(--forest);
+  --btn-fg: var(--champagne);
+  --btn-border: var(--forest);
+  --btn-bg-hover: var(--gold);
+  --btn-fg-hover: var(--forest-deep);
+}
+
+.btn-lg {
+  min-height: 3.5rem;
+  padding: 0.95rem 2.1rem;
+  font-size: 1rem;
+}
+
+.btn .ico {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+}
+
+.btn[aria-busy="true"] {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* ---------- 4. Type + radii polish ---------- */
+
+body {
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+h1, h2, h3 {
+  font-kerning: normal;
+  font-optical-sizing: auto;
+}
+
+.header.scrolled {
+  box-shadow: 0 16px 30px -26px rgba(0, 0, 0, 0.85);
+}
+
+.editorial-head p {
+  max-width: 38rem;
+}
+
+.media { border-radius: var(--r-card); }
+.mx-card { border-radius: var(--r-card); }
+.craft-card { border-radius: var(--r-card); }
+.flow-card { border-radius: var(--r-card); }
+.promise-panel { border-radius: var(--r-panel); }
+
+/* ---------- 5. Hero trust row ---------- */
+
+.hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1.75rem;
+  margin-top: 2.25rem;
+  list-style: none;
+  font-size: 0.9rem;
+  color: var(--gold-light);
+}
+
+.hero-trust li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hero-trust li::before {
+  content: '';
+  flex: none;
+  width: 0.4rem;
+  height: 0.4rem;
+  rotate: 45deg;
+  background: var(--gold);
+}
+
+.hero-trust a {
+  color: var(--champagne);
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 0.3em;
+  transition: color 160ms var(--ease-out);
+}
+
+.hero-trust a:hover { color: #fff; }
+
+/* ---------- 6. Craft + service polish (tonal cards on the lighter cream) ---------- */
+
+.craft-card {
+  background: var(--cream-deep);
+  box-shadow: inset 0 0 0 1px rgba(143, 107, 31, 0.16);
+}
+
+.craft-card:nth-child(2) { background: #E9DFC4; }
+.craft-card:nth-child(3) { background: var(--forest); box-shadow: none; }
+.craft-card:nth-child(4) { background: #F3EBD6; }
+
+.craft-figure { box-shadow: 0 24px 50px -34px rgba(11, 48, 32, 0.6); }
+
+.promise-panel {
+  --fil-color: rgba(197, 160, 89, 0.7);
+  --fil-size: 3rem;
+  padding: clamp(2.25rem, 5vw, 4rem) clamp(2rem, 6vw, 4.5rem);
+  background: var(--forest-deep);
+}
+
+/* ---------- 7. Menu showcase + closing CTA ---------- */
+
+.mx-card {
+  transition: transform 520ms var(--ease-out), box-shadow 520ms var(--ease-out), border-color 320ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mx-card:hover { border-color: rgba(197, 160, 89, 0.6); }
+}
+
+.menu-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding: clamp(1.5rem, 3vw, 2.25rem) clamp(1.5rem, 4vw, 2.75rem);
+  border-radius: var(--r-card);
+  background: rgba(244, 239, 228, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(197, 160, 89, 0.22);
+}
+
+.menu-cta p {
+  max-width: 30rem;
+  font: 500 clamp(1.25rem, 1rem + 1vw, 1.6rem) / 1.3 var(--font-display);
+  color: var(--champagne);
+}
+
+/* ---------- 8. Bespoke: "Your event. Your vibe. Your menu." ---------- */
+
+#bespoke {
+  padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  background: var(--cream-lux);
+}
+
+.bespoke-panel {
+  --fil-color: rgba(143, 107, 31, 0.75);
+  padding: clamp(2.75rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4.5rem);
+  border-radius: var(--r-panel);
+  background: var(--cream-deep);
+  box-shadow: inset 0 0 0 1px rgba(143, 107, 31, 0.2);
+}
+
+.bespoke-head {
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+  max-width: 44rem;
+  margin: 0 auto clamp(2.25rem, 4vw, 3.5rem);
+  text-align: center;
+}
+
+.bespoke-head h2 {
+  font: 500 clamp(2rem, 1.1rem + 3.4vw, 3.5rem) / 1.05 var(--font-display);
+  letter-spacing: -0.02em;
+  color: var(--forest);
+}
+
+.bespoke-head p {
+  max-width: 38rem;
+  font-size: var(--text-lg);
+  line-height: 1.75;
+  color: var(--ink-muted);
+}
+
+.bespoke-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 48rem) {
+  .bespoke-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+}
+
+.bespoke-item {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  border: 0;
+  border-radius: var(--r-card);
+  background: var(--cream-card);
+  box-shadow: inset 0 0 0 1px rgba(11, 48, 32, 0.08);
+  transition: transform 520ms var(--ease-out), box-shadow 320ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .bespoke-item:hover {
+    transform: translateY(-4px);
+    box-shadow: inset 0 0 0 1px rgba(143, 107, 31, 0.45), 0 22px 36px -26px rgba(11, 48, 32, 0.5);
+    transition-duration: 280ms;
+  }
+}
+
+.bespoke-item .check {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--gold);
+}
+
+.bespoke-item .check svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.bespoke-item > span:not(.check) {
+  font: 500 clamp(1.1rem, 1rem + 0.5vw, 1.3rem) / 1.35 var(--font-display);
+  letter-spacing: -0.005em;
+  color: var(--forest);
+}
+
+.bespoke-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem 1.75rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.text-link {
+  font-weight: 600;
+  color: var(--forest);
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.35em;
+  transition: color 160ms var(--ease-out), text-decoration-color 160ms var(--ease-out);
+}
+
+.text-link:hover {
+  color: var(--bronze);
+  text-decoration-color: var(--bronze);
+}
+
+/* ---------- 9. Estimator polish ---------- */
+
+.estimator-box { border-radius: var(--r-panel); }
+.estimator-box::before { border-radius: 12px; }
+.estimator-box .package-option { border-radius: var(--r-ctl); }
+
+.estimate-result .btn {
+  width: 100%;
+  min-height: 3.25rem;
+}
+
+/* ---------- 10. Feedback: "How did we pour?" ---------- */
+
+#feedback {
+  padding-top: 0;
+  background: var(--cream-lux);
+}
+
+.feedback-panel {
+  --fil-color: rgba(197, 160, 89, 0.85);
+  --focus: var(--gold);
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: center;
+  padding: clamp(2.75rem, 6vw, 4.75rem) clamp(1.75rem, 5vw, 4.5rem);
+  border-radius: var(--r-panel);
+  background:
+    radial-gradient(90% 120% at 100% 0%, rgba(197, 160, 89, 0.14), transparent 55%),
+    linear-gradient(160deg, #0F3D2A 0%, var(--forest) 55%, #082618 100%);
+  box-shadow: inset 0 0 0 1px rgba(197, 160, 89, 0.28), 0 40px 60px -48px rgba(11, 48, 32, 0.75);
+  color: var(--off-white);
+}
+
+.feedback-copy {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 34rem;
+}
+
+.feedback-copy h2 {
+  font: 500 clamp(2rem, 1.2rem + 3vw, 3.25rem) / 1.06 var(--font-display);
+  letter-spacing: -0.02em;
+  color: var(--champagne);
+}
+
+.feedback-copy p {
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  color: var(--gold-light);
+}
+
+.feedback-action {
+  display: grid;
+  justify-items: center;
+  gap: 1.1rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: var(--r-card);
+  background: rgba(244, 239, 228, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(197, 160, 89, 0.2);
+  text-align: center;
+}
+
+.feedback-stars {
+  display: flex;
+  gap: 0.35rem;
+  color: rgba(197, 160, 89, 0.3);
+}
+
+.feedback-stars svg {
+  width: 1.9rem;
+  height: 1.9rem;
+  transition: color 240ms var(--ease-out), transform 420ms var(--spring-pop);
+}
+
+.feedback-stars svg:nth-child(2) { --k: 1; }
+.feedback-stars svg:nth-child(3) { --k: 2; }
+.feedback-stars svg:nth-child(4) { --k: 3; }
+.feedback-stars svg:nth-child(5) { --k: 4; }
+
+.feedback-action .meta {
+  font-size: 0.9rem;
+  color: var(--gold-light);
+}
+
+.feedback-panel .btn-primary {
+  --btn-bg: var(--gold);
+  --btn-fg: var(--forest-deep);
+  --btn-border: var(--gold);
+  --btn-bg-hover: var(--champagne);
+  --btn-fg-hover: var(--forest-deep);
+  width: 100%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .feedback-panel:has(.btn:hover) .feedback-stars svg { color: var(--gold); transform: translateY(-2px); }
+  .feedback-panel:has(.btn:hover) .feedback-stars svg:nth-child(2) { transition-delay: 40ms; }
+  .feedback-panel:has(.btn:hover) .feedback-stars svg:nth-child(3) { transition-delay: 80ms; }
+  .feedback-panel:has(.btn:hover) .feedback-stars svg:nth-child(4) { transition-delay: 120ms; }
+  .feedback-panel:has(.btn:hover) .feedback-stars svg:nth-child(5) { transition-delay: 160ms; }
+}
+
+.feedback-panel:has(.btn:focus-visible) .feedback-stars svg { color: var(--gold); }
+
+@media (min-width: 56rem) {
+  .feedback-panel {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: clamp(3rem, 6vw, 5rem);
+  }
+}
+
+/* Modal: same family as the section it opens from */
+
+.modal-overlay .modal {
+  max-width: 34rem;
+  border-radius: var(--r-panel);
+  background: var(--cream-lux);
+  box-shadow: inset 0 0 0 1px rgba(143, 107, 31, 0.28);
+}
+
+.modal-ornament {
+  margin: 0.25rem 0 1rem;
+}
+
+.modal .sub { margin-bottom: 1.25rem; }
+
+.modal .rating-row {
+  padding-block: 0.7rem;
+  border-bottom: 1px solid rgba(143, 107, 31, 0.18);
+}
+
+.modal .rating-row:last-of-type { border-bottom: 0; }
+
+.modal-overlay .modal :is(input:not([type="checkbox"], [type="radio"]), textarea, select) {
+  padding: 0.8rem 0.9rem;
+  border: 1px solid #DDD8C9;
+  border-radius: var(--r-ctl);
+  background: #fff;
+  transition: border-color 140ms var(--ease-out), box-shadow 140ms var(--ease-out);
+}
+
+.modal-overlay .modal :is(input:not([type="checkbox"], [type="radio"]), textarea, select):focus {
+  outline: 0;
+  border-color: var(--forest);
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.35);
+}
+
+.stars button { color: #D3CCB6; }
+
+.stars button.active { color: var(--gold-deep); }
+
+@media (hover: hover) and (pointer: fine) {
+  .stars button:hover { color: var(--gold); }
+}
+
+.stars button:focus-visible {
+  outline: 2px solid var(--forest);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.feedback-success .seal {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 auto 0.9rem;
+  border-radius: 50%;
+  background: var(--forest);
+  color: var(--gold);
+}
+
+.feedback-success .seal svg { width: 1.6rem; height: 1.6rem; }
+
+/* ---------- 11. Request a Quote ---------- */
+
+.quote-card {
+  --fil-color: rgba(143, 107, 31, 0.65);
+  --fil-size: 2.75rem;
+  position: relative;
+  padding: clamp(2.25rem, 5vw, 3.25rem);
+  border: 0;
+  border-radius: var(--r-panel);
+  box-shadow: 0 30px 60px -40px rgba(0, 0, 0, 0.75);
+}
+
+.q-input { border-radius: var(--r-ctl); background: #FFFEFB; }
+.q-chip span { border-radius: var(--r-ctl); }
+
+.quote-card .q-submit {
+  min-height: 3.5rem;
+  gap: 0.65rem;
+  font-size: 1rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .quote-card .q-submit:hover { box-shadow: 0 18px 30px -18px rgba(11, 48, 32, 0.7); }
+}
+
+.q-note { line-height: 1.5; }
+
+.quote-wa { border-radius: var(--r-card); box-shadow: inset 0 0 0 1px rgba(197, 160, 89, 0.22); }
+
+/* ---------- 12. Footer + floating WhatsApp ---------- */
+
+.footer-ornament {
+  --ornament-color: var(--gold);
+  margin: 0 auto clamp(2rem, 4vw, 3rem);
+  opacity: 0.7;
+}
+
+.wa-float {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: auto;
+  height: 3.5rem;
+  padding: 0 1.2rem 0 1rem;
+  border-radius: 14px;
+  background: #11803F;
+  animation-fill-mode: backwards;
+  transition: background-color 160ms var(--ease-out), transform 420ms var(--spring-pop), opacity 260ms var(--ease-out), translate 360ms var(--ease-lux);
+}
+
+.wa-label {
+  font: 600 0.9rem / 1 var(--font-body);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.wa-float.is-hidden {
+  opacity: 0;
+  translate: 0 14px;
+  pointer-events: none;
+}
+
+/* ---------- 13. Kinetic reveals: opacity + translate only, so nothing reflows ---------- */
+
+@keyframes lux-in {
+  from { opacity: 0; translate: 0 var(--rise, 26px); }
+}
+
+.anim-ready [data-anim].is-in {
+  --rise: 26px;
+  animation: lux-in 1000ms var(--ease-lux) var(--d, 0s) backwards;
+}
+
+/* Children of a revealed block cascade in after their parent starts */
+.anim-ready [data-anim].is-in [data-stagger] > * {
+  --rise: 18px;
+  animation: lux-in 900ms var(--ease-lux) calc(260ms + var(--k, 0) * 90ms) backwards;
+}
+
+[data-stagger] > :nth-child(2) { --k: 1; }
+[data-stagger] > :nth-child(3) { --k: 2; }
+[data-stagger] > :nth-child(4) { --k: 3; }
+[data-stagger] > :nth-child(5) { --k: 4; }
+[data-stagger] > :nth-child(6) { --k: 5; }
+
+/* One orchestrated moment: the five stars light up in turn */
+@keyframes star-on {
+  from { color: rgba(197, 160, 89, 0.3); transform: scale(0.8); }
+  60%  { transform: scale(1.14); }
+  to   { color: var(--gold); transform: none; }
+}
+
+.anim-ready [data-anim].is-in .feedback-stars svg {
+  animation: star-on 700ms var(--ease-lux) calc(600ms + var(--k, 0) * 110ms) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-ready [data-anim].is-in,
+  .anim-ready [data-anim].is-in [data-stagger] > *,
+  .anim-ready [data-anim].is-in .feedback-stars svg { animation: none; }
+  .feedback-stars { color: var(--gold); }
+  .bespoke-item, .feedback-stars svg, .wa-float { transition: none; }
+}
