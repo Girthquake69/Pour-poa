@@ -325,6 +325,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Mobile sticky note: tiny badge opens the full note as a popover
+  const noteBadge = document.querySelector('.note-badge');
+  const noteEl = document.getElementById('hero-note');
+  const noteBackdrop = document.querySelector('.note-backdrop');
+  const noteClose = document.querySelector('.note-close');
+  if (noteBadge && noteEl && noteBackdrop) {
+    const setNote = open => {
+      noteEl.classList.toggle('is-open', open);
+      noteBackdrop.hidden = !open;
+      noteBadge.setAttribute('aria-expanded', String(open));
+      if (open) noteClose?.focus(); else if (document.activeElement === noteClose) noteBadge.focus();
+    };
+    noteBadge.addEventListener('click', () => setNote(true));
+    noteClose?.addEventListener('click', () => setNote(false));
+    noteBackdrop.addEventListener('click', () => setNote(false));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && noteEl.classList.contains('is-open')) setNote(false); });
+    window.matchMedia('(min-width: 768px)').addEventListener('change', e => { if (e.matches) setNote(false); });
+  }
+
   // Floating WhatsApp steps aside while the quote form is on screen
   const waFloat = document.querySelector('.wa-float');
   const contactSection = document.getElementById('contact');
