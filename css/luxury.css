@@ -628,10 +628,6 @@ h1, h2, h3 {
   html, body { overflow-x: clip; }
   .container { padding-inline: var(--gutter); }
 
-  /* Eyebrow banner: the "Premium mobile bar experiences" line is hidden */
-  .top-bar-tagline { display: none; }
-  .top-bar { padding: 0.45rem 0; }
-
   /* Type scale */
   .editorial-head,
   .bespoke-head { gap: 1rem; margin-bottom: 1.75rem; }
@@ -713,23 +709,6 @@ h1, h2, h3 {
   /* Hover lifts don't belong on touch; give a press state instead */
   .mx-card:active { transform: scale(0.99); }
 
-  /* ---------- Sticky note: a compact marginal note, not a second hero block ---------- */
-  .hero-sticky-note {
-    order: -1;
-    align-self: flex-start;
-    width: min(15.5rem, calc(100% - 2.5rem));
-    min-height: 0;
-    margin: 1.25rem 0 0 var(--gutter);
-    padding: 1.1rem 1rem 0.8rem;
-    transform: rotate(-1.5deg);
-    box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.45);
-    gap: 0.5rem;
-  }
-  .hero-sticky-tape { width: 4.5rem; height: 1.2rem; top: -0.6rem; }
-  .hero-sticky-date { margin-bottom: 0.4rem; padding-bottom: 3px; font-size: 0.95rem; }
-  .hero-sticky-content { font-size: 1.25rem; line-height: 1.3; }
-  .hero-sticky-footer { margin-top: 0.4rem; font-size: 0.85rem; }
-
   /* ---------- Sticky WhatsApp ---------- */
   .wa-float {
     right: max(1rem, env(safe-area-inset-right));
@@ -743,4 +722,155 @@ h1, h2, h3 {
   .wa-label { display: none; }
   .wa-float { width: 3.25rem; padding: 0; justify-content: center; }
   .q-chip span { padding: 0.55rem 0.8rem; }
+}
+
+/* ==========================================================================
+   15. Round 3: dashes, header, note popover, hero CTAs, process, menu, estimator
+   ========================================================================== */
+
+/* No decorative dashes beside eyebrows, taglines or badges (all widths) */
+.eyebrow::before,
+.estimator-eyebrow::before,
+.hero-tag::before,
+.hero-tag::after {
+  content: none;
+  display: none;
+}
+
+/* Header stays pinned with a solid background */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--emerald-dark);
+}
+
+/* Estimator sliders: min/max labels and ticks are gone, so the slider owns its spacing */
+.range-labels { display: none; }
+.estimator-box input[type="range"] { margin-bottom: 0.5rem; }
+
+/* Mobile-only note controls are hidden on larger screens */
+.note-badge,
+.note-close,
+.note-backdrop { display: none; }
+
+/* ---------- Under 768px: sticky note becomes a tiny badge that opens a popover ---------- */
+@media (max-width: 767.98px) {
+
+  .hero-sticky-note { display: none; }
+
+  .note-badge {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 0;
+    border-radius: 6px 6px 14px 6px;
+    background: #fff68f;
+    color: #fff68f;
+    rotate: 6deg;
+    box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    transition: rotate 300ms var(--ease-lux), scale 300ms var(--ease-lux);
+  }
+  .note-badge svg { width: 1.5rem; height: 1.5rem; color: #fff68f; }
+  .note-badge:active { scale: 0.92; rotate: 0deg; }
+  .note-badge[aria-expanded="true"] { opacity: 0; pointer-events: none; }
+
+  .note-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1590;
+    background: rgba(4, 22, 15, 0.7);
+  }
+  .note-backdrop:not([hidden]) { display: block; }
+
+  .hero-sticky-note.is-open {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: min(19rem, calc(100vw - 3rem));
+    height: max-content;
+    min-height: 15rem;
+    z-index: 1600;
+    transform: rotate(-3deg);
+    box-shadow: 4px 14px 32px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.25);
+  }
+
+  .hero-sticky-note.is-open .note-close {
+    position: absolute;
+    top: 0.35rem;
+    right: 0.45rem;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    background: none;
+    font: 400 1.75rem / 1 sans-serif;
+    color: #5a4a00;
+    cursor: pointer;
+  }
+
+  /* ---------- Hero CTAs: one clear primary, one quiet secondary ---------- */
+  .hero-actions { gap: 0.85rem; }
+
+  .hero-actions .btn {
+    width: 100%;
+    min-height: 3.5rem;
+    padding: 0 1.5rem;
+    border-radius: var(--r-ctl);
+    border-width: 1px;
+    justify-content: center;
+  }
+
+  .hero-actions .btn-primary {
+    --btn-fg: var(--forest);
+    font-weight: 700;
+    box-shadow: 0 14px 28px -12px rgba(197, 160, 89, 0.65), 0 2px 0 rgba(0, 0, 0, 0.25);
+    transition: transform 280ms var(--ease-lux), box-shadow 280ms var(--ease-lux), color 160ms var(--ease-out);
+  }
+  .hero-actions .btn-primary:active { transform: translateY(1px) scale(0.985); }
+
+  .hero-actions .btn-outline {
+    --btn-border: rgba(197, 160, 89, 0.4);
+    --btn-fg: var(--gold-light);
+    font-weight: 500;
+    box-shadow: none;
+  }
+
+  /* ---------- Process steps: no number bubbles or connecting line ---------- */
+  .flow-node { display: none; }
+  .flow::before { display: none; }
+  .flow-item { margin-left: 0; }
+
+  /* ---------- Weddings & Celebrations: feature tagline removed ---------- */
+  .occ-includes { display: none; }
+
+  /* ---------- Customization card runs edge to edge ---------- */
+  #bespoke { padding-inline: 0; }
+  #bespoke > .container { padding-inline: 0; max-width: none; }
+  .bespoke-panel {
+    border-radius: 0;
+    box-shadow: inset 0 1px 0 rgba(143, 107, 31, 0.2), inset 0 -1px 0 rgba(143, 107, 31, 0.2);
+  }
+
+  /* ---------- Feedback card runs edge to edge ---------- */
+  #feedback { padding-inline: 0; }
+  #feedback > .container { padding-inline: 0; max-width: none; }
+  .feedback-panel { border-radius: 0; }
+}
+
+/* Process steps also lose their bubbles below the desktop flow layout (under 64rem) */
+@media (max-width: 63.99rem) {
+  .flow-node { display: none; }
+  .flow::before { display: none; }
+  .flow-item { margin-left: 0; }
 }
