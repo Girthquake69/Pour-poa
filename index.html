@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="images/background.png" fetchpriority="high" />
-  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link rel="stylesheet" href="css/style.css?v=6" />
   <link rel="icon" href="images/logo-sm.png" type="image/png" />
 
   <!-- Scroll animation gate: elements marked data-anim only start hidden when JS is running
@@ -997,7 +997,7 @@
       .mx-card, .mx-media img, .q-chip span, .quote-card .q-submit { transition: none; }
     }
   </style>
-  <link rel="stylesheet" href="css/luxury.css?v=3" />
+  <link rel="stylesheet" href="css/luxury.css?v=4" />
 
   <script type="application/ld+json">
   {
@@ -1015,17 +1015,7 @@
 
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Top Bar -->
-  <div class="top-bar">
-    <div class="container">
-      <span>Premium mobile bar experiences across Nairobi and surrounding areas</span>
-      <span>
-        <a href="tel:+254708736114">0708 736 114</a>
-        &nbsp;·&nbsp;
-        <a href="mailto:pourpoakenya@gmail.com">pourpoakenya@gmail.com</a>
-      </span>
-    </div>
-  </div>
+</div>
 
   <!-- Header -->
   <header class="header">
@@ -1057,7 +1047,7 @@
     <section class="hero" id="hero" aria-labelledby="hero-title">
 
       <!-- Top right sticky note widget -->
-      <aside class="hero-sticky-note" aria-label="Daily note">
+      <aside class="hero-sticky-note hero-sticky-note--desktop" aria-label="Daily note">
         <div class="hero-sticky-tape" aria-hidden="true"></div>
         <div>
           <div class="hero-sticky-date">
@@ -1067,6 +1057,21 @@
         </div>
         <div class="hero-sticky-footer">the editor</div>
       </aside>
+      <!-- Mobile sticky note: tiny badge + expandable popover -->
+      <button type="button" class="sticky-fab" id="sticky-fab" aria-label="Open daily note" aria-expanded="false" aria-controls="sticky-popover">
+        <span class="sticky-fab-icon" aria-hidden="true">📝</span>
+      </button>
+      <div class="sticky-popover" id="sticky-popover" role="dialog" aria-label="Daily note" hidden>
+        <button type="button" class="sticky-popover-close" id="sticky-popover-close" aria-label="Close">×</button>
+        <div class="sticky-popover-inner">
+          <div class="hero-sticky-date">
+            <span aria-hidden="true">📅</span> <span id="hero-sticky-date-text-mobile">Today</span>
+          </div>
+          <p class="hero-sticky-content" id="hero-sticky-message-mobile"></p>
+          <div class="hero-sticky-footer">the editor</div>
+        </div>
+      </div>
+
 
       <div class="container">
         <div class="hero-content">
@@ -1212,7 +1217,6 @@
                 <li>Birthdays</li>
                 <li>Celebrations</li>
               </ul>
-              <p class="occ-includes">Setup · Curated menu · Mixology · Garnishes</p>
             </div>
           </div>
 
@@ -1227,7 +1231,6 @@
                 <li>Brunches</li>
                 <li>Intimate Gatherings</li>
               </ul>
-              <p class="occ-includes">Setup · Curated menu · Mixology · Garnishes</p>
             </div>
           </div>
 
@@ -1241,7 +1244,6 @@
               <ul class="occ-chips" role="list">
                 <li>Corporate Events</li>
               </ul>
-              <p class="occ-includes">Setup · Curated menu · Mixology · Garnishes</p>
             </div>
           </div>
 
@@ -1256,7 +1258,6 @@
                 <li>Private Parties</li>
                 <li>Custom Events</li>
               </ul>
-              <p class="occ-includes">Setup · Curated menu · Mixology · Garnishes</p>
             </div>
           </div>
         </div>
@@ -1286,89 +1287,81 @@
         <article class="mx-card mx-card--hero">
           <figure class="mx-media">
             <img src="images/menu-kenyan-sour.jpg" alt="Kenyan Sour in a coupe glass with a pale foam crown" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Coupe Glass</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-tag">House Signature</p>
-          <p class="mx-profile">Silky · Citrus · Classic</p>
             <h3>Kenyan Sour</h3>
+            <p class="mx-tag">House Signature</p>
+            <p class="mx-profile">Silky · Citrus · Classic</p>
             <p class="mx-copy">Whiskey softened with fresh lemon and house syrup, shaken with egg white into a velvety, balanced foam.</p>
           </div>
         </article>
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-hibiscus-sunset.jpg" alt="Hibiscus Sunset cocktail in a highball glass" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Highball</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-profile">Floral · Tropical · Bright</p>
             <h3>Hibiscus Sunset</h3>
+            <p class="mx-profile">Floral · Tropical · Bright</p>
             <p class="mx-copy">Vodka brightened with pineapple and lemon, lifted by ruby hibiscus syrup, a vibrant, sun kissed pour.</p>
           </div>
         </article>
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-blue-lagoon.jpg" alt="Blue Lagoon cocktail with a bright blue hue" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Hurricane Glass</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-profile">Crisp · Citrus · Playful</p>
             <h3>Blue Lagoon</h3>
+            <p class="mx-profile">Crisp · Citrus · Playful</p>
             <p class="mx-copy">Vodka and triple sec shaken with lemon, topped with Sprite and blue curaçao, cool, sparkling, and bold in colour.</p>
           </div>
         </article>
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-mango-chilli.jpg" alt="Mango Chilli cocktail in a rocks glass" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Rocks Glass</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-profile">Sweet · Spicy · Tropical</p>
             <h3>Mango Chilli</h3>
+            <p class="mx-profile">Sweet · Spicy · Tropical</p>
             <p class="mx-copy">Vodka with ripe mango juice, lime, and syrup, a lively play of heat and sweetness.</p>
           </div>
         </article>
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-pineapple-rum-punch.jpg" alt="Pineapple Rum Punch garnished with fruit" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Tiki Glass</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-profile">Fruity · Bold · Festive</p>
             <h3>Pineapple Rum Punch</h3>
+            <p class="mx-profile">Fruity · Bold · Festive</p>
             <p class="mx-copy">Rum with pineapple, orange, and lime, rounded out with hibiscus syrup, a crowd pleasing tropical punch.</p>
           </div>
         </article>
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-long-island-iced-coffee.jpg" alt="Long Island Iced Coffee over ice in a Collins glass" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Collins Glass</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-profile">Strong · Coffee · Indulgent</p>
             <h3>Long Island Iced Coffee</h3>
+            <p class="mx-profile">Strong · Coffee · Indulgent</p>
             <p class="mx-copy">Vodka, rum, tequila, and whiskey meet coffee liqueur, fresh coffee, and cream liqueur, a rich, dessert style classic.</p>
           </div>
         </article>
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-moscow-mule.jpg" alt="Moscow Mule served in a copper mug" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Copper Mug</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-profile">Ginger · Zesty · Refreshing</p>
             <h3>Moscow Mule</h3>
+            <p class="mx-profile">Ginger · Zesty · Refreshing</p>
             <p class="mx-copy">Spirit with KC lemon and ginger, sharpened by lime and lengthened with ginger ale, spicy, clean, and sharp.</p>
           </div>
         </article>
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-vanilla-coffee.jpg" alt="Vanilla Coffee cocktail in a glass coffee mug" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Coffee Glass</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-profile">Creamy · Smooth · Comforting</p>
             <h3>Vanilla Coffee</h3>
+            <p class="mx-profile">Creamy · Smooth · Comforting</p>
             <p class="mx-copy">Vanilla vodka, cream liqueur, coffee, and milk, sweetened with syrup, soft, rich, and aromatic.</p>
           </div>
         </article>
@@ -1378,44 +1371,40 @@
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-classic-mimosa.jpg" alt="Classic Mimosa in a champagne flute" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Champagne Flute</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-profile">Bright · Bubbly · Simple</p>
             <h3>Classic Mimosa</h3>
+            <p class="mx-profile">Bright · Bubbly · Simple</p>
             <p class="mx-copy">Fresh squeezed orange juice and sparkling wine, with ratios set for optimal balance.</p>
           </div>
         </article>
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-passion-spritz.jpg" alt="Passion Spritz with mint in a wine glass" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Wine Glass</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-profile">Tropical · Light · Festive</p>
             <h3>Passion Spritz</h3>
+            <p class="mx-profile">Tropical · Light · Festive</p>
             <p class="mx-copy">Aperol or a house bitter with fresh passion fruit, prosecco, soda, and mint.</p>
           </div>
         </article>
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-peach-bellini.jpg" alt="Peach Bellini in a champagne flute" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Champagne Flute</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-profile">Soft · Fruity · Elegant</p>
             <h3>Peach Bellini</h3>
+            <p class="mx-profile">Soft · Fruity · Elegant</p>
             <p class="mx-copy">House peach purée and sparkling wine, clean, soft, and celebratory.</p>
           </div>
         </article>
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-grapefruit-paloma-spritz.jpg" alt="Grapefruit Paloma Spritz in a highball glass" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Highball</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-profile">Zesty · Refreshing · Modern</p>
             <h3>Grapefruit Paloma Spritz</h3>
+            <p class="mx-profile">Zesty · Refreshing · Modern</p>
             <p class="mx-copy">Tequila or a non alcoholic base with fresh grapefruit and soda, with a salt rim on request.</p>
           </div>
         </article>
@@ -1425,44 +1414,40 @@
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-sunrise-cooler.jpg" alt="Sunrise Cooler mocktail in a highball glass" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Highball</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-profile">Citrus · Bright · Zero ABV</p>
             <h3>Sunrise Cooler</h3>
+            <p class="mx-profile">Citrus · Bright · Zero ABV</p>
             <p class="mx-copy">Fresh orange, passion fruit, and lime with house ginger syrup and soda, all fresh juice, zero alcohol.</p>
           </div>
         </article>
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-garden-fizz.jpg" alt="Garden Fizz mocktail with cucumber and mint" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Collins Glass</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-profile">Herbal · Crisp · Refreshing</p>
             <h3>Garden Fizz</h3>
+            <p class="mx-profile">Herbal · Crisp · Refreshing</p>
             <p class="mx-copy">Fresh cucumber, mint, and lime with rosemary syrup and sparkling water.</p>
           </div>
         </article>
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-spiced-apple-spark.jpg" alt="Spiced Apple Spark mocktail in a rocks glass" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Rocks Glass</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-profile">Warm · Seasonal · Complex</p>
             <h3>Spiced Apple Spark</h3>
+            <p class="mx-profile">Warm · Seasonal · Complex</p>
             <p class="mx-copy">Fresh apple, cinnamon, and lemon with house spice syrup, finished with tonic or soda.</p>
           </div>
         </article>
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-berry-basil-smash.jpg" alt="Berry Basil Smash mocktail with berries and basil" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-            <span class="mx-badge">Rocks Glass</span>
           </figure>
           <div class="mx-body">
-          <p class="mx-profile">Fruity · Aromatic · Vibrant</p>
             <h3>Berry Basil Smash</h3>
+            <p class="mx-profile">Fruity · Aromatic · Vibrant</p>
             <p class="mx-copy">Fresh berries and basil smashed with lemon and light syrup, topped with soda.</p>
           </div>
         </article>
@@ -1517,8 +1502,7 @@
                 <span>Number of Guests</span>
                 <span class="value" id="guests-val">50</span>
               </label>
-              <input type="range" id="guests" min="10" max="300" value="50" step="5" />
-              <div class="range-labels" aria-hidden="true"><span>10</span><span>300</span></div>
+              <input type="range" id="guests" min="10" max="300" value="50" step="1" />
             </div>
 
             <div>
@@ -1527,7 +1511,6 @@
                 <span class="value" id="hours-val">4</span>
               </label>
               <input type="range" id="hours" min="2" max="10" value="4" step="1" />
-              <div class="range-labels" aria-hidden="true"><span>2h</span><span>10h</span></div>
             </div>
 
             <div role="radiogroup" aria-labelledby="lbl-package">
@@ -1764,7 +1747,7 @@
     <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.672-1.64-.922-2.206-.242-.579-.487-.5-.672-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
-  <script src="js/main.js?v=5" defer></script>
+  <script src="js/main.js?v=6" defer></script>
 
   <script>
     /* Estimator: fills the slider track up to the thumb (Chrome/Safari); Firefox does this natively */
@@ -1778,29 +1761,30 @@
   </script>
 
   <script>
-    /* Hero sticky note, daily message + live date */
+    /* Hero sticky note, daily message + live date (desktop + mobile) */
     (function () {
-      // Index 0 = Sunday … 6 = Saturday (matches Date#getDay)
       var messages = [
-        "Eiiiii, angalau kunywa maji leo",                                        // Sunday
-        "Ancestors pia wachangie leo",                                            // Monday
-        "I think there may be blood in my alcohol system",                        // Tuesday
-        "Who is kulevya and why is he claiming my stash",                         // Wednesday
-        "Si tumalizie wiki hapo guys",                                            // Thursday
-        "Its Friday, Kazi haijawahi isha na pesa haijawai tosha, fungeni laptop", // Friday
-        "Laptop inafaa kua on sai ni ya DJ"                                       // Saturday
+        "Eiiiii, angalau kunywa maji leo",
+        "Ancestors pia wachangie leo",
+        "I think there may be blood in my alcohol system",
+        "Who is kulevya and why is he claiming my stash",
+        "Si tumalizie wiki hapo guys",
+        "Its Friday, Kazi haijawahi isha na pesa haijawai tosha, fungeni laptop",
+        "Laptop inafaa kua on sai ni ya DJ"
       ];
-
       var now = new Date();
-      var msgEl = document.getElementById('hero-sticky-message');
-      var dateEl = document.getElementById('hero-sticky-date-text');
-
-      if (msgEl) msgEl.textContent = messages[now.getDay()];
-      if (dateEl) {
-        dateEl.textContent = now.toLocaleDateString('en-GB', {
-          weekday: 'short', day: 'numeric', month: 'short', year: 'numeric'
-        });
-      }
+      var msg = messages[now.getDay()];
+      var dateStr = now.toLocaleDateString('en-GB', {
+        weekday: 'short', day: 'numeric', month: 'short', year: 'numeric'
+      });
+      ['hero-sticky-message', 'hero-sticky-message-mobile'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = msg;
+      });
+      ['hero-sticky-date-text', 'hero-sticky-date-text-mobile'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = dateStr;
+      });
     })();
   </script>
 
