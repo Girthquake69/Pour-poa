@@ -613,435 +613,95 @@ h1, h2, h3 {
   .bespoke-item, .feedback-stars svg, .wa-float { transition: none; }
 }
 
-/* ==========================================================================
-   14. Mobile + menu showcase refinements (appended)
-   ========================================================================== */
+/* ---------- Feedback section: fully centered ---------- */
 
-@media (max-width: 768px) {
-
-  /* Fluid scale: tighter section rhythm, calmer gutters, no sideways scroll */
-  :root {
-    --section-pad: clamp(3rem, 2rem + 5vw, 4rem);
-    --gutter: 1.25rem;
-  }
-
-  html, body { overflow-x: clip; }
-  .container { padding-inline: var(--gutter); }
-
-  /* Type scale */
-  .editorial-head,
-  .bespoke-head { gap: 1rem; margin-bottom: 1.75rem; }
-  .editorial-head h2,
-  .bespoke-head h2,
-  .estimator-intro h2,
-  .quote-intro h2,
-  .feedback-copy h2 { font-size: clamp(1.85rem, 1.3rem + 2.6vw, 2.35rem); line-height: 1.1; }
-  .editorial-head p,
-  .bespoke-head p,
-  .feedback-copy p,
-  .estimator-intro p,
-  .quote-intro > p { font-size: 1rem; line-height: 1.65; }
-
-  .hero-content { padding-block: clamp(2.5rem, 8vh, 4rem) clamp(2.5rem, 7vh, 3.5rem); }
-  .hero h1 { font-size: clamp(2.15rem, 1.4rem + 4.6vw, 2.75rem); }
-  .hero-actions { flex-direction: column; align-items: stretch; }
-  .hero-actions .btn { width: 100%; }
-  .hero-trust { flex-direction: column; align-items: center; gap: 0.5rem; margin-top: 1.75rem; }
-
-  /* Panels and grids: balanced padding and gaps */
-  .craft, .estimator-layout, .quote { gap: 2rem; }
-  .craft-cards { gap: 1rem; }
-  .craft-card, .flow-card { padding: 1.5rem 1.25rem; }
-  .flow { gap: 1.1rem; }
-  .promise-panel { padding: 2rem 1.5rem; }
-  .bespoke-panel { padding: 2.5rem 1.25rem; }
-  .bespoke-item { padding: 1.1rem; gap: 0.9rem; }
-  .feedback-panel { padding: 2.5rem 1.5rem; }
-  .quote-card { padding: 2.25rem 1.25rem; }
-  .menu-cta { padding: 1.5rem 1.25rem; }
-  .menu-cta .btn, .bespoke-cta .btn, .occ-cta .btn { width: 100%; }
-  .footer-grid { gap: 1.75rem; margin-bottom: 2rem; }
-
-  /* Occasions tabs: swipeable, thumb-sized */
-  .occ-tabs { width: 100%; scroll-snap-type: x proximity; }
-  .occ-tab { min-height: 2.75rem; scroll-snap-align: start; }
-
-  /* ---------- Menu showcase ---------- */
-  .menu-showcase .menu-tabs {
-    width: calc(100% + var(--gutter));
-    margin-right: calc(var(--gutter) * -1);   /* bleeds to the screen edge so the swipe is obvious */
-    padding: 0.3rem;
-    border-radius: 12px 0 0 12px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-    margin-bottom: 1.5rem;
-  }
-
-  .menu-showcase .menu-tabs::-webkit-scrollbar { display: none; }
-
-  .menu-showcase .menu-tab {
-    min-height: 2.75rem;
-    padding: 0.7rem 1.1rem;
-    font-size: 0.95rem;
-    flex: 0 0 auto;
-    white-space: nowrap;
-    scroll-snap-align: start;
-  }
-
-  .menu-showcase .menu-panel.active { gap: 1rem; }
-
-  .mx-card--hero .mx-media,
-  .mx-media { aspect-ratio: 16 / 11; }
-
-  .mx-body { padding: 1.1rem 1.15rem 1.35rem; gap: 0.4rem; }
-  .mx-card--hero .mx-body { padding: 1.25rem 1.15rem 1.5rem; }
-  .mx-body h3 { font-size: 1.3rem; }
-  .mx-card--hero h3 { font-size: 1.6rem; }
-  .mx-copy, .mx-card--hero .mx-copy { font-size: 0.97rem; line-height: 1.6; }
-  .mx-profile { font-size: 0.72rem; letter-spacing: 0.12em; }
-  .mx-badge { left: 0.6rem; bottom: 0.6rem; }
-
-  /* Hover lifts don't belong on touch; give a press state instead */
-  .mx-card:active { transform: scale(0.99); }
-
-  /* ---------- Sticky WhatsApp ---------- */
-  .wa-float {
-    right: max(1rem, env(safe-area-inset-right));
-    bottom: max(1rem, env(safe-area-inset-bottom));
-    height: 3.25rem;
-    padding: 0 1rem 0 0.9rem;
-  }
-}
-
-@media (max-width: 380px) {
-  .wa-label { display: none; }
-  .wa-float { width: 3.25rem; padding: 0; justify-content: center; }
-  .q-chip span { padding: 0.55rem 0.8rem; }
-}
-
-/* ==========================================================================
-   15. Round 3: dashes, header, note popover, hero CTAs, process, menu, estimator
-   ========================================================================== */
-
-/* No decorative dashes beside eyebrows, taglines or badges (all widths) */
-.eyebrow::before,
-.estimator-eyebrow::before,
-.hero-tag::before,
-.hero-tag::after {
-  content: none;
-  display: none;
-}
-
-/* Header stays pinned with a solid background */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: var(--emerald-dark);
-}
-
-/* Estimator sliders: min/max labels and ticks are gone, so the slider owns its spacing */
-.range-labels { display: none; }
-.estimator-box input[type="range"] { margin-bottom: 0.5rem; }
-
-/* Mobile-only note controls are hidden on larger screens */
-.note-badge,
-.note-close,
-.note-backdrop { display: none; }
-
-/* ---------- Under 768px: sticky note becomes a tiny badge that opens a popover ---------- */
-@media (max-width: 767.98px) {
-
-  .hero-sticky-note { display: none; }
-
-  .note-badge {
-    position: absolute;
-    top: 0.85rem;
-    right: 0.85rem;
-    z-index: 20;
-    display: grid;
-    place-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    padding: 0;
-    border: 0;
-    border-radius: 6px 6px 14px 6px;
-    background: #fff68f;
-    color: #fff68f;
-    rotate: 6deg;
-    box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.6);
-    cursor: pointer;
-    transition: rotate 300ms var(--ease-lux), scale 300ms var(--ease-lux);
-  }
-  .note-badge svg { width: 1.5rem; height: 1.5rem; color: #fff68f; }
-  .note-badge:active { scale: 0.92; rotate: 0deg; }
-  .note-badge[aria-expanded="true"] { opacity: 0; pointer-events: none; }
-
-  .note-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 1590;
-    background: rgba(4, 22, 15, 0.7);
-  }
-  .note-backdrop:not([hidden]) { display: block; }
-
-  .hero-sticky-note.is-open {
-    display: flex;
-    position: fixed;
-    inset: 0;
-    margin: auto;
-    width: min(19rem, calc(100vw - 3rem));
-    height: max-content;
-    min-height: 15rem;
-    z-index: 1600;
-    transform: rotate(-3deg);
-    box-shadow: 4px 14px 32px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.25);
-  }
-
-  .hero-sticky-note.is-open .note-close {
-    position: absolute;
-    top: 0.35rem;
-    right: 0.45rem;
-    z-index: 2;
-    display: grid;
-    place-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border: 0;
-    background: none;
-    font: 400 1.75rem / 1 sans-serif;
-    color: #5a4a00;
-    cursor: pointer;
-  }
-
-  /* ---------- Hero CTAs: one clear primary, one quiet secondary ---------- */
-  .hero-actions { gap: 0.85rem; }
-
-  .hero-actions .btn {
-    width: 100%;
-    min-height: 3.5rem;
-    padding: 0 1.5rem;
-    border-radius: var(--r-ctl);
-    border-width: 1px;
-    justify-content: center;
-  }
-
-  .hero-actions .btn-primary {
-    --btn-fg: var(--forest);
-    font-weight: 700;
-    box-shadow: 0 14px 28px -12px rgba(197, 160, 89, 0.65), 0 2px 0 rgba(0, 0, 0, 0.25);
-    transition: transform 280ms var(--ease-lux), box-shadow 280ms var(--ease-lux), color 160ms var(--ease-out);
-  }
-  .hero-actions .btn-primary:active { transform: translateY(1px) scale(0.985); }
-
-  .hero-actions .btn-outline {
-    --btn-border: rgba(197, 160, 89, 0.4);
-    --btn-fg: var(--gold-light);
-    font-weight: 500;
-    box-shadow: none;
-  }
-
-  /* ---------- Process steps: no number bubbles or connecting line ---------- */
-  .flow-node { display: none; }
-  .flow::before { display: none; }
-  .flow-item { margin-left: 0; }
-
-  /* ---------- Weddings & Celebrations: feature tagline removed ---------- */
-  .occ-includes { display: none; }
-
-  /* ---------- Customization card runs edge to edge ---------- */
-  #bespoke { padding-inline: 0; }
-  #bespoke > .container { padding-inline: 0; max-width: none; }
-  .bespoke-panel {
-    border-radius: 0;
-    box-shadow: inset 0 1px 0 rgba(143, 107, 31, 0.2), inset 0 -1px 0 rgba(143, 107, 31, 0.2);
-  }
-
-  /* ---------- Feedback card runs edge to edge ---------- */
-  #feedback { padding-inline: 0; }
-  #feedback > .container { padding-inline: 0; max-width: none; }
-  .feedback-panel { border-radius: 0; }
-}
-
-/* Process steps also lose their bubbles below the desktop flow layout (under 64rem) */
-@media (max-width: 63.99rem) {
-  .flow-node { display: none; }
-  .flow::before { display: none; }
-  .flow-item { margin-left: 0; }
-}
-
-/* ==========================================================================
-   16. Round 4: floating pill header, mobile scaling, centred feedback, icon-only WhatsApp
-   ========================================================================== */
-
-:root {
-  --brown: #2B1A10;
-  --brown-line: rgba(197, 160, 89, 0.3);
-  --header-h: 5.5rem;
-}
-
-/* ---------- Floating pill header, overlaying the hero ---------- */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  width: calc(100% - 2rem);
-  max-width: 1200px;
-  margin: 1rem auto;
-  border: 1px solid var(--brown-line);
-  border-radius: 999px;
-  background: var(--brown);
-  box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.7);
-}
-
-.header.scrolled {
-  border-color: var(--gold);
-  box-shadow: 0 18px 34px -18px rgba(0, 0, 0, 0.85);
-}
-
-.header .container {
+.feedback-panel {
+  text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  max-width: none;
-  min-height: 4rem;
-  padding-inline: 1.5rem 1rem;
+  justify-content: center;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
 }
 
-.header .logo { margin-right: auto; }
-.menu-toggle { margin-left: auto; }
-
-@media (max-width: 47.99rem) {
-  .header .container { padding-inline: 1.25rem 0.5rem; }
-
-  .nav {
-    top: calc(100% + 0.5rem);
-    left: 0;
-    right: 0;
-    border: 1px solid var(--brown-line);
-    border-radius: 24px;
-    background: var(--brown);
-    box-shadow: 0 24px 40px -20px rgba(0, 0, 0, 0.8);
-  }
+.feedback-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 34rem;
+  margin-inline: auto;
 }
 
-/* The note and hero content clear the floating header */
-@media (min-width: 901px) {
-  .hero-sticky-note { top: 5.75rem; }
+.feedback-copy h2,
+.feedback-copy p {
+  text-align: center;
 }
 
-@media (min-width: 768px) and (max-width: 900px) {
-  .hero-sticky-note { margin-top: 5.75rem; }
-  .hero-content { padding-top: 2rem; }
-}
-
-/* ---------- Centred feedback card (all widths) ---------- */
-.feedback-panel,
-.feedback-copy,
 .feedback-action {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  width: 100%;
+  max-width: 22rem;
+  margin-inline: auto;
 }
 
-.feedback-copy { max-width: 36rem; }
-.feedback-action { width: 100%; max-width: 26rem; }
-.feedback-stars { justify-content: center; }
-.feedback-action .meta { text-align: center; }
+.feedback-stars {
+  justify-content: center;
+}
+
+.feedback-action .meta {
+  text-align: center;
+}
+
+.feedback-panel .btn-primary {
+  width: 100%;
+  max-width: 18rem;
+}
 
 @media (min-width: 56rem) {
   .feedback-panel {
-    display: flex;
+    grid-template-columns: none;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(2rem, 4vw, 3rem);
   }
 }
 
-/* ---------- Floating WhatsApp: icon-only circle ---------- */
-.wa-float,
-.wa-float:hover {
-  display: grid;
-  place-items: center;
-  width: 3.5rem;
-  height: 3.5rem;
-  padding: 0;
-  gap: 0;
-  border-radius: 50%;
+/* Header pill polish from luxury layer */
+.header {
+  --fil-color: transparent;
 }
 
-.wa-float svg { width: 1.9rem; height: 1.9rem; }
-
-/* ---------- Mobile scaling ---------- */
-@media (max-width: 768px) {
-  :root { --gutter: 1rem; }
-
-  .container { padding-inline: 1rem; }
-  .section { padding-block: clamp(2.5rem, 2rem + 3vw, 3.25rem); }
-
-  /* Headings: smaller, tighter, never overflowing */
-  main h1:not(.zz),
-  .hero h1 {
-    font-size: clamp(1.9rem, 8vw, 2.3rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-  }
-  main h2:not(.zz) {
-    font-size: clamp(1.55rem, 6.4vw, 1.9rem);
-    line-height: 1.15;
-    letter-spacing: -0.015em;
-  }
-  main h3:not(.zz) { line-height: 1.2; }
-  main :is(h1, h2, h3, p, li) { overflow-wrap: break-word; }
-  .hero-sub { font-size: 1rem; line-height: 1.6; }
-
-  /* Vertical rhythm */
-  .editorial-head, .bespoke-head { margin-bottom: 1.5rem; gap: 0.85rem; }
-  .craft, .estimator-layout, .quote { gap: 1.75rem; }
-  .craft-card, .flow-card { padding: 1.5rem 1rem; }
-  .promise-panel { padding: 1.75rem 1rem; }
-  .bespoke-panel { padding: 2.25rem 1rem; }
-  .feedback-panel { padding: 2.25rem 1rem; gap: 1.5rem; }
-  .quote-card { padding: 2rem 1rem; }
-  .menu-cta { padding: 1.5rem 1rem; }
-
-  /* Touch targets: comfortable, proportional */
-  .btn,
-  .btn-lg {
-    min-height: 3rem;
-    padding: 0.75rem 1.25rem;
-    font-size: 0.95rem;
-  }
-  .hero-actions .btn { min-height: 3.25rem; }
-
-  /* Hero image: cropped to fill, with a heavier overlay for legibility */
-  .hero { background-position: 60% top; background-size: cover; }
-  .hero::before {
-    background: linear-gradient(to top, rgba(5, 28, 21, 0.96) 0%, rgba(5, 28, 21, 0.82) 50%, rgba(5, 28, 21, 0.6) 100%);
-  }
-  .hero-content { padding-block: 7.5rem 2.5rem; }
-
-  /* Note badge sits below the floating header */
-  .note-badge { top: 5.9rem; }
-
-  .wa-float { width: 3.25rem; height: 3.25rem; }
-  .wa-float svg { width: 1.75rem; height: 1.75rem; }
+/* Keep floating nav above sticky note */
+.hero-sticky-note {
+  z-index: 5;
 }
 
-/* Header fit: logo and CTA never wrap; CTA waits for the full desktop width */
-.header .logo, .logo-text { white-space: nowrap; }
-.header .btn { white-space: nowrap; }
-@media (min-width: 48rem) and (max-width: 63.99rem) {
-  .header .btn-primary { display: none; }
-  .nav { gap: 1.1rem; }
+
+/* Force centered feedback layout (overrides earlier grid) */
+#feedback .feedback-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  grid-template-columns: none !important;
 }
+
+#feedback .feedback-copy,
+#feedback .feedback-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 36rem;
+}
+
+#feedback .feedback-stars {
+  display: flex;
+  justify-content: center;
+}
+

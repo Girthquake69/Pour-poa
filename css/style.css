@@ -1972,3 +1972,241 @@ input[type="range"] {
   color: var(--gold-light);
 }
 
+
+/* ==========================================================================
+   REQUIRED UPDATES 2025 — floating header, mobile scale, WA circular, feedback center
+   ========================================================================== */
+
+/* ---------- 1. Floating pill navigation ---------- */
+
+.top-bar {
+  display: none; /* declutter; contact lives in footer + form */
+}
+
+.header {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: calc(100% - 2rem);
+  max-width: 1200px;
+  margin: 0;
+  min-height: auto;
+  padding: 0.55rem 1rem;
+  background: rgba(8, 42, 31, 0.92);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(14px) saturate(1.2);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  border-radius: 999px;
+  box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: background-color 200ms var(--ease-out), border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+
+.header.scrolled {
+  background: rgba(5, 28, 21, 0.96);
+  border-color: var(--gold);
+  box-shadow: 0 16px 40px -14px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 0;
+  padding-inline: 0.35rem;
+  width: 100%;
+  max-width: none;
+}
+
+.header .logo img {
+  height: 2.25rem;
+}
+
+.header .logo-text {
+  font-size: 1.2rem;
+  color: var(--champagne);
+}
+
+.header .nav {
+  gap: clamp(0.85rem, 1.8vw, 1.5rem);
+}
+
+.header .nav a {
+  font-size: 0.875rem;
+  color: var(--gold-light);
+  padding: 0.4rem 0;
+}
+
+.header .btn-primary {
+  display: none; /* keep header compact; CTAs live in hero/form */
+}
+
+.menu-toggle {
+  color: var(--champagne);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: rgba(197, 160, 89, 0.12);
+}
+
+.menu-toggle:hover {
+  background: rgba(197, 160, 89, 0.22);
+}
+
+/* Mobile drawer under the floating pill */
+@media (max-width: 47.99rem) {
+  .header .nav {
+    top: calc(100% + 0.6rem);
+    left: 0;
+    right: 0;
+    margin: 0;
+    border-radius: 18px;
+    border: 1px solid rgba(197, 160, 89, 0.28);
+    background: rgba(5, 28, 21, 0.98);
+    box-shadow: 0 20px 40px -16px rgba(0, 0, 0, 0.7);
+    padding: 0.75rem 1.25rem 1.1rem;
+  }
+  .menu-toggle {
+    display: grid;
+  }
+}
+
+/* Push content below floating header */
+.hero {
+  padding-top: 5.5rem;
+}
+
+html {
+  scroll-padding-top: 5.5rem;
+}
+
+/* ---------- 2. Mobile typography, spacing, buttons, hero crop ---------- */
+
+@media (max-width: 47.99rem) {
+  :root {
+    --section-pad: clamp(2.75rem, 8vw, 4.5rem);
+    --gutter: 1rem;
+  }
+
+  .container {
+    padding-inline: 1rem;
+  }
+
+  .hero {
+    min-height: 85svh;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero::before {
+    background: linear-gradient(
+      to top,
+      rgba(5, 28, 21, 0.96) 0%,
+      rgba(5, 28, 21, 0.78) 40%,
+      rgba(5, 28, 21, 0.55) 100%
+    );
+  }
+
+  .hero-content {
+    padding-block: clamp(3.5rem, 10vh, 5.5rem) 2.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.85rem, 1.2rem + 4.2vw, 2.75rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .hero-actions {
+    gap: 0.6rem;
+  }
+
+  .hero-actions .btn {
+    min-height: 2.75rem;
+    padding: 0.7rem 1.15rem;
+    font-size: 0.9rem;
+    width: 100%;
+    max-width: 20rem;
+  }
+
+  .btn-lg {
+    min-height: 2.85rem;
+    padding: 0.75rem 1.35rem;
+    font-size: 0.95rem;
+  }
+
+  .editorial-head h2,
+  .section-header h2,
+  .estimator-intro h2,
+  .bespoke-head h2,
+  .feedback-copy h2,
+  .quote-intro h2 {
+    font-size: clamp(1.65rem, 1.15rem + 2.8vw, 2.35rem);
+    line-height: 1.12;
+  }
+
+  .craft-card h3,
+  .flow-card h3,
+  .occ-body h3 {
+    font-size: 1.2rem;
+  }
+
+  .section {
+    padding-block: var(--section-pad);
+  }
+
+  .estimator-box,
+  .quote-card,
+  .feedback-panel,
+  .bespoke-panel {
+    padding: 1.5rem 1rem;
+  }
+
+  .package-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ensure hero image always covers */
+.hero {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* ---------- 5. Circular icon-only WhatsApp float ---------- */
+
+.wa-float {
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  gap: 0;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 28px -6px rgba(17, 128, 63, 0.65);
+}
+
+.wa-float .wa-label {
+  display: none;
+}
+
+.wa-float svg {
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wa-float:hover {
+    transform: scale(1.08);
+  }
+}
+

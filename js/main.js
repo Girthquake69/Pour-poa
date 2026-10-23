@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let i = 1; i <= 5; i++) {
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg>';
+        btn.textContent = '★';
         btn.dataset.value = i;
         btn.setAttribute('aria-label', i + (i === 1 ? ' star' : ' stars'));
         btn.setAttribute('aria-pressed', 'false');
@@ -323,25 +323,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (note) note.textContent = defaultNote;
       }, 4500);
     });
-  }
-
-  // Mobile sticky note: tiny badge opens the full note as a popover
-  const noteBadge = document.querySelector('.note-badge');
-  const noteEl = document.getElementById('hero-note');
-  const noteBackdrop = document.querySelector('.note-backdrop');
-  const noteClose = document.querySelector('.note-close');
-  if (noteBadge && noteEl && noteBackdrop) {
-    const setNote = open => {
-      noteEl.classList.toggle('is-open', open);
-      noteBackdrop.hidden = !open;
-      noteBadge.setAttribute('aria-expanded', String(open));
-      if (open) noteClose?.focus(); else if (document.activeElement === noteClose) noteBadge.focus();
-    };
-    noteBadge.addEventListener('click', () => setNote(true));
-    noteClose?.addEventListener('click', () => setNote(false));
-    noteBackdrop.addEventListener('click', () => setNote(false));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape' && noteEl.classList.contains('is-open')) setNote(false); });
-    window.matchMedia('(min-width: 768px)').addEventListener('change', e => { if (e.matches) setNote(false); });
   }
 
   // Floating WhatsApp steps aside while the quote form is on screen
