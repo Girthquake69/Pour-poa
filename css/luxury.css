@@ -874,3 +874,174 @@ h1, h2, h3 {
   .flow::before { display: none; }
   .flow-item { margin-left: 0; }
 }
+
+/* ==========================================================================
+   16. Round 4: floating pill header, mobile scaling, centred feedback, icon-only WhatsApp
+   ========================================================================== */
+
+:root {
+  --brown: #2B1A10;
+  --brown-line: rgba(197, 160, 89, 0.3);
+  --header-h: 5.5rem;
+}
+
+/* ---------- Floating pill header, overlaying the hero ---------- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: calc(100% - 2rem);
+  max-width: 1200px;
+  margin: 1rem auto;
+  border: 1px solid var(--brown-line);
+  border-radius: 999px;
+  background: var(--brown);
+  box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.7);
+}
+
+.header.scrolled {
+  border-color: var(--gold);
+  box-shadow: 0 18px 34px -18px rgba(0, 0, 0, 0.85);
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: none;
+  min-height: 4rem;
+  padding-inline: 1.5rem 1rem;
+}
+
+.header .logo { margin-right: auto; }
+.menu-toggle { margin-left: auto; }
+
+@media (max-width: 47.99rem) {
+  .header .container { padding-inline: 1.25rem 0.5rem; }
+
+  .nav {
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    border: 1px solid var(--brown-line);
+    border-radius: 24px;
+    background: var(--brown);
+    box-shadow: 0 24px 40px -20px rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* The note and hero content clear the floating header */
+@media (min-width: 901px) {
+  .hero-sticky-note { top: 5.75rem; }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .hero-sticky-note { margin-top: 5.75rem; }
+  .hero-content { padding-top: 2rem; }
+}
+
+/* ---------- Centred feedback card (all widths) ---------- */
+.feedback-panel,
+.feedback-copy,
+.feedback-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.feedback-copy { max-width: 36rem; }
+.feedback-action { width: 100%; max-width: 26rem; }
+.feedback-stars { justify-content: center; }
+.feedback-action .meta { text-align: center; }
+
+@media (min-width: 56rem) {
+  .feedback-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+}
+
+/* ---------- Floating WhatsApp: icon-only circle ---------- */
+.wa-float,
+.wa-float:hover {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  gap: 0;
+  border-radius: 50%;
+}
+
+.wa-float svg { width: 1.9rem; height: 1.9rem; }
+
+/* ---------- Mobile scaling ---------- */
+@media (max-width: 768px) {
+  :root { --gutter: 1rem; }
+
+  .container { padding-inline: 1rem; }
+  .section { padding-block: clamp(2.5rem, 2rem + 3vw, 3.25rem); }
+
+  /* Headings: smaller, tighter, never overflowing */
+  main h1:not(.zz),
+  .hero h1 {
+    font-size: clamp(1.9rem, 8vw, 2.3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  main h2:not(.zz) {
+    font-size: clamp(1.55rem, 6.4vw, 1.9rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+  main h3:not(.zz) { line-height: 1.2; }
+  main :is(h1, h2, h3, p, li) { overflow-wrap: break-word; }
+  .hero-sub { font-size: 1rem; line-height: 1.6; }
+
+  /* Vertical rhythm */
+  .editorial-head, .bespoke-head { margin-bottom: 1.5rem; gap: 0.85rem; }
+  .craft, .estimator-layout, .quote { gap: 1.75rem; }
+  .craft-card, .flow-card { padding: 1.5rem 1rem; }
+  .promise-panel { padding: 1.75rem 1rem; }
+  .bespoke-panel { padding: 2.25rem 1rem; }
+  .feedback-panel { padding: 2.25rem 1rem; gap: 1.5rem; }
+  .quote-card { padding: 2rem 1rem; }
+  .menu-cta { padding: 1.5rem 1rem; }
+
+  /* Touch targets: comfortable, proportional */
+  .btn,
+  .btn-lg {
+    min-height: 3rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.95rem;
+  }
+  .hero-actions .btn { min-height: 3.25rem; }
+
+  /* Hero image: cropped to fill, with a heavier overlay for legibility */
+  .hero { background-position: 60% top; background-size: cover; }
+  .hero::before {
+    background: linear-gradient(to top, rgba(5, 28, 21, 0.96) 0%, rgba(5, 28, 21, 0.82) 50%, rgba(5, 28, 21, 0.6) 100%);
+  }
+  .hero-content { padding-block: 7.5rem 2.5rem; }
+
+  /* Note badge sits below the floating header */
+  .note-badge { top: 5.9rem; }
+
+  .wa-float { width: 3.25rem; height: 3.25rem; }
+  .wa-float svg { width: 1.75rem; height: 1.75rem; }
+}
+
+/* Header fit: logo and CTA never wrap; CTA waits for the full desktop width */
+.header .logo, .logo-text { white-space: nowrap; }
+.header .btn { white-space: nowrap; }
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  .header .btn-primary { display: none; }
+  .nav { gap: 1.1rem; }
+}
