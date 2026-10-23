@@ -1,7 +1,7 @@
 /* Pour Poa — main interactions */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const WA_NUMBER = '254706813424';
+  const WA_NUMBER = '254708736114';
 
   // Year
   const yearEl = document.getElementById('year');
