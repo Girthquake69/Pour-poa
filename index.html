@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#082A1F" />
+  <meta name="theme-color" content="#0B3020" />
   <title>Pour Poa | Cocktails. Celebrations. Your kind of pour.</title>
   <meta name="description" content="Premium Kenyan mobile bar experience and bespoke event cocktail service. Fresh ingredients, thoughtful cocktails, exceptional service." />
 
@@ -11,11 +11,12 @@
   <meta property="og:title" content="Pour Poa | Premium mobile bar, Kenya" />
   <meta property="og:description" content="Cocktails. Celebrations. Your kind of pour. Bespoke mobile bar service across Nairobi and surrounding areas." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=erode@400,500,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="images/background.png" fetchpriority="high" />
-  <link rel="stylesheet" href="css/style.css?v=3" />
+  <link rel="stylesheet" href="css/style.css?v=5" />
   <link rel="icon" href="images/logo-sm.png" type="image/png" />
 
   <!-- Scroll animation gate: elements marked data-anim only start hidden when JS is running
@@ -28,976 +29,6 @@
     })();
   </script>
 
-  <style>
-    /* ==========================================================================
-       Pour Poa | page level additions (loads after css/style.css)
-       1. Hero sticky note   2. Button polish   3. Estimator 2 column editorial
-       4. Craft / Service flow / Occasions redesign   5. Scroll animation hooks
-       ========================================================================== */
-
-    /* ---------- 1. Hero sticky note ---------- */
-
-    .hero-sticky-note {
-      position: absolute;
-      top: 25px;
-      right: 40px;
-      z-index: 10;
-      width: 300px;          /* 20% larger */
-      min-height: 252px;     /* 20% larger */
-      padding: 26px 22px 20px;
-      background: #fff68f;
-      box-shadow: 4px 10px 25px rgba(0, 0, 0, 0.4), 0 2px 5px rgba(0, 0, 0, 0.2);
-      transform: rotate(5deg);
-      font-family: 'Caveat', cursive, sans-serif;
-      color: #2c2c2c;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 600ms var(--spring-pop), box-shadow 200ms var(--ease-out);
-      animation: note-stick 800ms var(--spring-soft) 350ms both;
-      border-top-left-radius: 2px;
-      border-top-right-radius: 2px;
-      border-bottom-left-radius: 2px;
-      border-bottom-right-radius: 17px 5px;   /* folded corner */
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .hero-sticky-note:hover { transform: rotate(0deg);
-      box-shadow: 4px 14px 30px rgba(0, 0, 0, 0.42), 0 2px 6px rgba(0, 0, 0, 0.2); }
-    }
-
-    @keyframes note-stick {
-      from { opacity: 0; translate: 0 -24px; scale: 1.12; }
-    }
-
-    .hero-sticky-tape {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 96px;
-      height: 29px;
-      background: rgba(255, 255, 255, 0.6);
-      -webkit-backdrop-filter: blur(3px);
-      backdrop-filter: blur(3px);
-      border-left: 2px dashed rgba(0, 0, 0, 0.08);
-      border-right: 2px dashed rgba(0, 0, 0, 0.08);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-      pointer-events: none;
-    }
-
-    .hero-sticky-date {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 12px;
-      padding-bottom: 5px;
-      border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
-      font-size: 1.1rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: #7a6e1a;
-    }
-
-    .hero-sticky-content {
-      margin: 0;
-      font-size: 1.6rem;
-      line-height: 1.35;
-      overflow-wrap: anywhere;
-    }
-
-    .hero-sticky-footer {
-      margin-top: 14px;
-      font-size: 0.95rem;
-      text-align: right;
-      color: #777;
-    }
-
-    @media (max-width: 900px) {
-      .hero {
-        flex-direction: column;
-        justify-content: center;
-      }
-      .hero > .container {
-        width: 100%;
-      }
-      .hero-sticky-note {
-        position: relative;
-        top: auto;
-        right: auto;
-        order: -1;
-        align-self: center;
-        width: min(300px, calc(100% - 2.5rem));
-        margin: 2.25rem auto 0;
-        transform: rotate(-1deg);
-      }
-      @media (hover: hover) and (pointer: fine) {
-        .hero-sticky-note:hover { transform: rotate(0deg); }
-      }
-    }
-
-    /* ---------- 2. Global button polish ---------- */
-
-    .btn {
-      border-radius: 10px;   /* soft, subtle, not a pill; overflow:hidden on .btn clips the hover wipe to match */
-    }
-
-    /* ---------- 3. Estimator, editorial two column ---------- */
-
-    .estimator-layout {
-      display: grid;
-      gap: clamp(2rem, 5vw, 3.5rem);
-      align-items: start;
-    }
-
-    .estimator-intro {
-      max-width: 34rem;
-    }
-
-    .estimator-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1.25rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .estimator-eyebrow::before {
-      content: '';
-      width: 2.5rem;
-      height: 1px;
-      background: currentColor;
-    }
-
-    .estimator-intro h2 {
-      margin-bottom: 1.25rem;
-      font: 500 clamp(2.25rem, 1.2rem + 3.6vw, 3.75rem) / 1.04 var(--font-display);
-      letter-spacing: -0.02em;
-      color: var(--champagne);
-    }
-
-    .estimator-intro p {
-      font-size: var(--text-lg);
-      line-height: 1.7;
-      color: var(--gold-light);
-    }
-
-    .estimator-layout .estimator-box {
-      width: 100%;
-      max-width: none;
-      margin: 0;
-    }
-
-    @media (min-width: 64rem) {
-      .estimator-layout {
-        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-        gap: clamp(3rem, 6vw, 6rem);
-      }
-      .estimator-intro {
-        position: sticky;
-        top: calc(var(--header-h) + 2rem);
-      }
-    }
-
-    /* ---------- 4. Shared pieces for the three redesigned sections ---------- */
-
-    .editorial-head {
-      display: grid;
-      gap: 1.25rem;
-      max-width: 44rem;
-      margin-bottom: clamp(2.5rem, 5vw, 4rem);
-    }
-
-    .editorial-head h2 {
-      font: 500 clamp(2rem, 1.1rem + 3.4vw, 3.5rem) / 1.05 var(--font-display);
-      letter-spacing: -0.02em;
-      color: var(--fg);
-    }
-
-    .editorial-head p {
-      font-size: var(--text-lg);
-      line-height: 1.7;
-      color: var(--fg-muted);
-    }
-
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .eyebrow::before {
-      content: '';
-      width: 2.5rem;
-      height: 1px;
-      background: currentColor;
-    }
-
-    /* Image containers: tonal fallback shows if an image has not been dropped in yet */
-    .media {
-      position: relative;
-      overflow: hidden;
-      margin: 0;
-      border-radius: 18px;
-      background:
-        radial-gradient(120% 90% at 20% 10%, rgba(197, 160, 89, 0.28), transparent 60%),
-        linear-gradient(160deg, #144d39 0%, #0c3b2b 55%, #082a1f 100%);
-    }
-
-    .media img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 600ms var(--ease-out);
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .media:hover img { transform: scale(1.04); }
-    }
-
-    /* ---------- 4a. Section 1, What is in your glass matters ---------- */
-
-    .craft-section {
-      background: var(--paper);
-    }
-
-    .craft {
-      display: grid;
-      gap: clamp(2.5rem, 5vw, 5rem);
-    }
-
-    .craft-intro .editorial-head {
-      margin-bottom: clamp(2rem, 4vw, 3rem);
-    }
-
-    .craft-figure {
-      aspect-ratio: 4 / 5;
-      max-height: 34rem;
-      width: 100%;
-      box-shadow: 0 24px 50px -28px rgba(8, 42, 31, 0.55);
-    }
-
-    .craft-cards {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-      align-content: start;
-    }
-
-    .craft-card {
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      padding: clamp(1.75rem, 3vw, 2.25rem);
-      border-radius: 18px;
-      background: #fbf8f1;
-      color: var(--ink);
-      box-shadow: 0 1px 0 rgba(18, 38, 30, 0.03);
-      transition: transform 520ms var(--ease-out), box-shadow 520ms var(--ease-out);
-    }
-
-    .craft-card:nth-child(2) { background: #ece3cc; }
-    .craft-card:nth-child(3) { background: var(--emerald); color: var(--off-white); }
-    .craft-card:nth-child(4) { background: #f1e9d6; }
-
-    @media (hover: hover) and (pointer: fine) {
-      .craft-card:hover { transform: translateY(-4px);
-      box-shadow: 0 22px 40px -22px rgba(8, 42, 31, 0.45); transition-duration: 280ms; }
-    }
-
-    /* Step number watermark */
-    .craft-card::after {
-      content: attr(data-num);
-      position: absolute;
-      top: -0.35rem;
-      right: 1rem;
-      z-index: -1;
-      font: 500 5.5rem / 1 var(--font-display);
-      font-variant-numeric: lining-nums;
-      letter-spacing: -0.04em;
-      color: currentColor;
-      opacity: 0.07;
-      pointer-events: none;
-    }
-
-    .card-backing {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      opacity: 0.14;
-      transition: opacity 400ms var(--ease-out);
-    }
-
-    .card-backing img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .craft-card:hover .card-backing { opacity: 0.24; }
-    }
-
-    .craft-card h3 {
-      margin-bottom: 0.6rem;
-      font: 600 1.4rem / 1.2 var(--font-display);
-      color: inherit;
-    }
-
-    .craft-card p {
-      font-size: 0.97rem;
-      line-height: 1.65;
-      color: var(--ink-muted);
-    }
-
-    .craft-card:nth-child(3) p {
-      color: var(--gold-light);
-    }
-
-    .craft-card:nth-child(3) h3 {
-      color: var(--champagne);
-    }
-
-    @media (min-width: 40rem) {
-      .craft-cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        padding-bottom: 2.75rem;
-      }
-      .craft-card:nth-child(even) {
-        margin-top: 2.75rem;    /* asymmetric stagger */
-      }
-    }
-
-    @media (min-width: 64rem) {
-      .craft {
-        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-        align-items: start;
-      }
-    }
-
-    /* ---------- 4b. Section 2, Service is part of the pour (connected timeline) ---------- */
-
-    .service-section {
-      background: var(--emerald);
-    }
-
-    .service-banner {
-      aspect-ratio: 21 / 8;
-      margin-bottom: clamp(3rem, 6vw, 5rem);
-    }
-
-    .flow {
-      position: relative;
-      display: grid;
-      gap: 1.5rem;
-      list-style: none;
-      margin-bottom: clamp(3rem, 6vw, 5rem);
-    }
-
-    /* Connector line, mobile: vertical, running through the nodes */
-    .flow::before {
-      content: '';
-      position: absolute;
-      top: 2.6rem;
-      bottom: 2.6rem;
-      left: 1.375rem;
-      width: 1px;
-      background: linear-gradient(to bottom, rgba(197, 160, 89, 0.15), rgba(197, 160, 89, 0.7) 20%, rgba(197, 160, 89, 0.7) 80%, rgba(197, 160, 89, 0.15));
-    }
-
-    .flow-item {
-      position: relative;
-      margin-left: 3.5rem;
-    }
-
-    .flow-node {
-      position: absolute;
-      top: 1.25rem;
-      left: -3.5rem;
-      z-index: 2;
-      display: grid;
-      place-items: center;
-      width: 2.75rem;
-      height: 2.75rem;
-      border-radius: 50%;
-      background: var(--emerald);
-      box-shadow: 0 0 0 1px rgba(197, 160, 89, 0.55), 0 0 0 6px var(--emerald);
-      font: 500 0.95rem / 1 var(--font-display);
-      font-variant-numeric: lining-nums;
-      letter-spacing: 0.04em;
-      color: var(--gold);
-      transition: background 200ms var(--ease-out), color 200ms var(--ease-out), transform 480ms var(--spring-pop);
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .flow-item:hover .flow-node { background: var(--gold);
-      color: var(--emerald-deeper);
-      transform: scale(1.12); }
-    }
-
-    .flow-card {
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      height: 100%;
-      padding: 1.75rem 1.5rem 1.75rem;
-      border-radius: 16px;
-      background: rgba(244, 239, 228, 0.06);
-      transition: transform 520ms var(--ease-out), box-shadow 520ms var(--ease-out), background 520ms var(--ease-out);
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .flow-card:hover { transform: translateY(-4px);
-      background: rgba(244, 239, 228, 0.1);
-      box-shadow: 0 22px 40px -22px rgba(0, 0, 0, 0.6); transition-duration: 280ms; }
-    }
-
-    /* Step number watermark */
-    .flow-card::after {
-      content: attr(data-num);
-      position: absolute;
-      right: 0.9rem;
-      bottom: -1.1rem;
-      z-index: -1;
-      font: 500 6.5rem / 1 var(--font-display);
-      font-variant-numeric: lining-nums;
-      letter-spacing: -0.04em;
-      color: var(--champagne);
-      opacity: 0.06;
-      pointer-events: none;
-    }
-
-    .flow-card h3 {
-      margin-bottom: 0.5rem;
-      font: 600 1.35rem / 1.2 var(--font-display);
-      color: var(--champagne);
-    }
-
-    .flow-card p {
-      font-size: 0.95rem;
-      line-height: 1.65;
-      color: var(--gold-light);
-    }
-
-    .flow-loop-tag {
-      display: inline-block;
-      margin-top: 0.9rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    @media (min-width: 64rem) {
-      .flow {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 1.5rem;
-        padding-top: 1.5rem;
-      }
-      /* Connector, desktop: horizontal, node centre to node centre */
-      .flow::before {
-        top: 1.5rem;
-        bottom: auto;
-        left: calc((100% - 4.5rem) / 8);
-        right: calc((100% - 4.5rem) / 8);
-        width: auto;
-        height: 1px;
-        background: linear-gradient(to right, rgba(197, 160, 89, 0.15), rgba(197, 160, 89, 0.7) 12%, rgba(197, 160, 89, 0.7) 88%, rgba(197, 160, 89, 0.15));
-      }
-      .flow-item {
-        margin-left: 0;
-        text-align: center;
-      }
-      .flow-node {
-        top: -1.375rem;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      .flow-card {
-        padding-top: 2.5rem;
-      }
-    }
-
-    .promise-panel {
-      display: grid;
-      gap: 0.75rem;
-      padding: clamp(2rem, 5vw, 3.5rem);
-      border-radius: 22px;
-      background: var(--emerald-dark);
-      box-shadow: inset 0 0 0 1px rgba(197, 160, 89, 0.12);
-    }
-
-    .promise-panel .label {
-      font: 500 0.95rem / 1.4 var(--font-body);
-      letter-spacing: 0.02em;
-      color: var(--gold);
-    }
-
-    .promise-panel p:not(.label) {
-      font: 500 clamp(1.6rem, 1rem + 2.6vw, 2.75rem) / 1.2 var(--font-display);
-      letter-spacing: -0.01em;
-      color: var(--champagne);
-    }
-
-    /* ---------- 4c. Section 3, Mobile bar experiences (tabbed categories) ---------- */
-
-    .occasions-section {
-      background: var(--cream);
-    }
-
-    #menu {
-      padding-top: var(--section-pad);   /* keeps the tonal break from the Occasions section */
-    }
-
-    .occ-tabs {
-      display: flex;
-      gap: 0.25rem;
-      width: fit-content;
-      max-width: 100%;
-      margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
-      padding: 0.35rem;
-      border-radius: 14px;
-      background: rgba(12, 59, 43, 0.07);
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .occ-tabs::-webkit-scrollbar {
-      display: none;
-    }
-
-    .occ-tab {
-      flex: 0 0 auto;
-      padding: 0.75rem 1.25rem;
-      border: 0;
-      border-radius: 10px;
-      background: transparent;
-      font: 600 0.95rem / 1.2 var(--font-body);
-      white-space: nowrap;
-      color: var(--ink-muted);
-      cursor: pointer;
-      transition: background 180ms var(--ease-out), color 180ms var(--ease-out), box-shadow 180ms var(--ease-out), transform 180ms var(--ease-out);
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .occ-tab:hover { color: var(--ink);
-      transform: translateY(-1px); }
-    }
-
-    .occ-tab[aria-selected="true"] {
-      background: var(--emerald);
-      color: var(--champagne);
-      box-shadow: 0 10px 20px -12px rgba(8, 42, 31, 0.7);
-    }
-
-    .occ-tab:active { transform: scale(0.97); }
-
-    .occ-tab:focus-visible {
-      outline: 2px solid var(--emerald);
-      outline-offset: 2px;
-    }
-
-    .occ-panel {
-      display: grid;
-      gap: clamp(1.5rem, 4vw, 3rem);
-      align-items: center;
-    }
-
-    .occ-panel[hidden] {
-      display: none;
-    }
-
-    .occ-panel > * { animation: rise 360ms var(--ease-out) calc(var(--i, 0) * 80ms) both; }
-    .occ-chips li { animation: rise 300ms var(--ease-out) calc(160ms + var(--i, 0) * 45ms) both; --rise: 10px; }
-
-    .occ-figure {
-      aspect-ratio: 4 / 3;
-      box-shadow: 0 28px 55px -30px rgba(8, 42, 31, 0.6);
-      transition: transform 520ms var(--ease-out), box-shadow 520ms var(--ease-out);
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .occ-figure:hover { transform: translateY(-4px);
-      box-shadow: 0 34px 60px -28px rgba(8, 42, 31, 0.6); transition-duration: 280ms; }
-    }
-
-    .occ-body {
-      display: grid;
-      gap: 1.25rem;
-      align-content: center;
-    }
-
-    .occ-body h3 {
-      font: 500 clamp(1.75rem, 1.2rem + 1.8vw, 2.5rem) / 1.1 var(--font-display);
-      letter-spacing: -0.015em;
-      color: var(--ink);
-    }
-
-    .occ-body p {
-      max-width: 34rem;
-      font-size: var(--text-lg);
-      line-height: 1.7;
-      color: var(--ink-muted);
-    }
-
-    .occ-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      list-style: none;
-    }
-
-    .occ-chips li {
-      padding: 0.5rem 0.95rem;
-      border-radius: 10px;
-      background: rgba(12, 59, 43, 0.08);
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--emerald);
-      transition: transform 460ms var(--spring-pop), background 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .occ-chips li:hover { transform: translateY(-4px);
-      background: #fff;
-      box-shadow: 0 14px 24px -16px rgba(8, 42, 31, 0.5); }
-    }
-
-    .occ-includes {
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--bronze);
-    }
-
-    .occ-cta {
-      margin-top: clamp(2.5rem, 5vw, 4rem);
-    }
-
-    @media (min-width: 56rem) {
-      .occ-panel {
-        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-      }
-    }
-
-    /* ---------- 5. Scroll animation hooks ----------
-       Mark anything with data-anim. Optional: style="--d:.12s" for a stagger.
-       Uses translate + opacity, so it never fights the transform hover lifts. */
-
-    .anim-ready [data-anim]:not(.is-in) {
-      opacity: 0;
-    }
-
-    .anim-ready [data-anim].is-in {
-      --rise: 22px;
-      animation: rise 720ms var(--ease-out) both;
-      animation-delay: var(--d, 0s);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .anim-ready [data-anim]:not(.is-in) { opacity: 1; }
-      .anim-ready [data-anim].is-in,
-      .occ-panel { animation: none; }
-      .craft-card, .flow-card, .occ-figure, .occ-chips li, .media img { transition: none; }
-    }
-
-    /* ==========================================================================
-       Fixed wallpaper + Section A (Request a Quote) + Section B (Menu Showcase)
-       ========================================================================== */
-
-    /* Fixed wallpaper (pseudo element: reliable on iOS, where background-attachment:fixed is ignored).
-       Everything opaque scrolls over it; transparent sections (#menu, #contact) let it show through. */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background:
-        radial-gradient(70% 55% at 12% 0%, rgba(201, 161, 91, 0.16), transparent 62%),
-        linear-gradient(180deg, rgba(10, 46, 35, 0.86), rgba(10, 46, 35, 0.95)),
-        url('images/background.png') center / cover no-repeat;
-      pointer-events: none;
-    }
-
-    .menu-showcase,
-    .quote-section {
-      --card: #F9F8F3;
-      --card-alt: #F4F1EA;
-      --hair: rgba(0, 0, 0, 0.08);
-      --field: #E2DFD7;
-      background: linear-gradient(180deg, rgba(10, 46, 35, 0.5), rgba(10, 46, 35, 0.78));
-    }
-
-    /* ---------- Section B: Cocktail Menu Showcase ---------- */
-
-    .menu-showcase .editorial-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
-
-    .menu-showcase .menu-tabs {
-      display: flex;
-      gap: 0.25rem;
-      width: fit-content;
-      max-width: 100%;
-      margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
-      padding: 0.35rem;
-      border: 1px solid rgba(244, 239, 228, 0.1);
-      border-radius: 12px;
-      background: rgba(244, 239, 228, 0.06);
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .menu-showcase .menu-tabs::-webkit-scrollbar { display: none; }
-
-    .menu-showcase .menu-tab {
-      flex: 0 0 auto;
-      margin: 0;
-      padding: 0.7rem 1.2rem;
-      border: 0;
-      border-radius: 8px;
-      background: transparent;
-      font: 600 0.92rem / 1.2 var(--font-body);
-      white-space: nowrap;
-      color: var(--gold-light);
-      transition: background 180ms var(--ease-out), color 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
-    }
-    @media (hover: hover) and (pointer: fine) {
-      .menu-showcase .menu-tab:hover { color: #fff; }
-    }
-    .menu-showcase .menu-tab.active {
-      background: var(--card);
-      color: var(--emerald-deeper);
-      box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.6);
-    }
-    .menu-showcase .menu-tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-
-    .menu-showcase .menu-panel { display: none; }
-    .menu-showcase .menu-panel.active {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-    }
-
-    .mx-card {
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      border: 1px solid var(--hair);
-      border-radius: 12px;
-      background: var(--card);
-      color: var(--ink);
-      transition: transform 520ms var(--ease-out), box-shadow 520ms var(--ease-out);
-    }
-    @media (hover: hover) and (pointer: fine) {
-      .mx-card:hover { transform: translateY(-4px);
-      box-shadow: 0 26px 44px -26px rgba(0, 0, 0, 0.7); transition-duration: 280ms; }
-    }
-
-    .mx-media {
-      position: relative;
-      margin: 0;
-      overflow: hidden;
-      aspect-ratio: 4 / 3;
-      background:
-        radial-gradient(90% 70% at 30% 20%, rgba(201, 161, 91, 0.18), transparent 60%),
-        linear-gradient(160deg, #1d2924, #0f1713);
-    }
-    .mx-media img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 600ms var(--ease-out);
-    }
-    @media (hover: hover) and (pointer: fine) {
-      .mx-card:hover .mx-media img { transform: scale(1.03); }
-    }
-
-    .mx-badge {
-      position: absolute;
-      left: 0.75rem;
-      bottom: 0.75rem;
-      padding: 0.35rem 0.6rem;
-      border-radius: 6px;
-      background: rgba(10, 46, 35, 0.78);
-      -webkit-backdrop-filter: blur(6px);
-      backdrop-filter: blur(6px);
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--champagne);
-    }
-
-    .mx-body {
-      display: grid;
-      gap: 0.5rem;
-      align-content: start;
-      padding: 1.25rem 1.35rem 1.5rem;
-    }
-    .mx-profile {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--bronze);
-    }
-    .mx-body h3 { font: 600 1.4rem / 1.2 var(--font-display); color: var(--ink); }
-    .mx-copy { font-size: 0.95rem; line-height: 1.65; color: var(--ink-muted); }
-
-    .mx-card--hero .mx-body { align-content: center; padding: clamp(1.5rem, 3vw, 2.5rem); }
-    .mx-card--hero h3 { font-size: clamp(1.9rem, 1.3rem + 1.6vw, 2.6rem); line-height: 1.08; }
-    .mx-card--hero .mx-copy { font-size: 1.05rem; }
-    .mx-tag {
-      width: fit-content;
-      padding: 0.3rem 0.6rem;
-      border-radius: 6px;
-      background: rgba(122, 85, 24, 0.1);
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--bronze);
-    }
-
-    @media (min-width: 40rem) {
-      .menu-showcase .menu-panel.active { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .mx-card--hero { grid-column: 1 / -1; }
-      .mx-card--hero .mx-media { aspect-ratio: 16 / 9; }
-    }
-
-    @media (min-width: 64rem) {
-      #panel-signature.active { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      #panel-brunch.active,
-      #panel-mocktails.active { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      .mx-card--hero { grid-column: span 2; flex-direction: row; }
-      .mx-card--hero .mx-media { flex: 1.1 1 0; aspect-ratio: auto; min-height: 100%; }
-      .mx-card--hero .mx-body { flex: 1 1 0; }
-    }
-
-    /* ---------- Section A: Request a Quote ---------- */
-
-    .quote {
-      display: grid;
-      gap: clamp(2.5rem, 5vw, 4rem);
-    }
-
-    .quote-intro h2 {
-      margin: 1rem 0 1.25rem;
-      font: 500 clamp(2.25rem, 1.2rem + 3.6vw, 3.75rem) / 1.04 var(--font-display);
-      letter-spacing: -0.02em;
-      color: var(--champagne);
-    }
-    .quote-intro > p { max-width: 32rem; font-size: var(--text-lg); line-height: 1.7; color: var(--gold-light); }
-
-    .quote-points { display: grid; gap: 0.85rem; margin: 2rem 0; list-style: none; }
-    .quote-points li {
-      display: flex;
-      gap: 0.75rem;
-      align-items: baseline;
-      font-size: 0.98rem;
-      color: var(--champagne);
-    }
-    .quote-points li::before { content: '✓'; font-weight: 700; color: var(--gold); }
-
-    .quote-wa {
-      display: grid;
-      gap: 0.35rem;
-      max-width: 28rem;
-      padding: 1.25rem 1.4rem;
-      border-radius: 12px;
-      background: rgba(244, 239, 228, 0.06);
-      color: var(--champagne);
-    }
-    .quote-wa strong { font: 600 1.05rem / 1.3 var(--font-display); }
-    .quote-wa span { font-size: 0.92rem; color: var(--gold-light); }
-    .quote-wa a { width: fit-content; font-weight: 600; color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
-
-    .quote-card {
-      --fg: var(--ink);
-      --focus: var(--emerald);
-      padding: clamp(1.5rem, 4vw, 2.5rem);
-      border: 1px solid var(--hair);
-      border-radius: 12px;
-      background: var(--card);
-      box-shadow: 0 30px 60px -32px rgba(0, 0, 0, 0.7);
-      color: var(--ink);
-      accent-color: var(--emerald);
-    }
-
-    .q-grid { display: grid; grid-template-columns: 1fr; gap: 1.1rem; margin-bottom: 1.75rem; }
-    .q-field { display: grid; gap: 0.45rem; align-content: start; min-width: 0; border: 0; padding: 0; margin: 0; }
-    .q-field label, .q-field legend { padding: 0; font-size: 0.875rem; font-weight: 600; color: var(--ink); }
-
-    .q-input {
-      width: 100%;
-      padding: 0.8rem 0.9rem;
-      border: 1px solid var(--field);
-      border-radius: 8px;
-      background: #fff;
-      font: 400 1rem / 1.4 var(--font-body);
-      color: var(--ink);
-      transition: border-color 140ms var(--ease-out), box-shadow 140ms var(--ease-out);
-    }
-    textarea.q-input { min-height: 7rem; resize: vertical; }
-    .q-input::placeholder { color: var(--ink); opacity: 0.4; }
-    .q-input:hover { border-color: #cfcbc0; }
-    .q-input:focus { outline: 0; border-color: var(--emerald); box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.3); }
-
-    .q-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .q-chip { position: relative; display: inline-flex; }
-    .q-chip input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
-    .q-chip span {
-      padding: 0.6rem 1rem;
-      border: 1px solid var(--field);
-      border-radius: 8px;
-      background: #fff;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--ink-muted);
-      transition: background 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 420ms var(--spring-pop);
-    }
-    @media (hover: hover) and (pointer: fine) {
-      .q-chip:hover span { border-color: var(--emerald); color: var(--ink); transform: translateY(-1px); }
-    }
-    .q-chip input:checked + span { border-color: var(--emerald); background: var(--emerald); color: var(--champagne); }
-    .q-chip input:active + span { transform: scale(0.93); }
-    .q-chip input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
-
-    .quote-card .q-submit { width: 100%; min-height: 3.25rem; transition: color 140ms var(--ease-out), transform 140ms var(--ease-out), box-shadow 140ms var(--ease-out); }
-    @media (hover: hover) and (pointer: fine) {
-      .quote-card .q-submit:hover { transform: translateY(-2px); box-shadow: 0 16px 28px -16px rgba(130, 22, 28, 0.7); }
-    }
-    .quote-card .q-submit:active { transform: scale(0.97); }
-    .q-note { margin-top: 0.9rem; font-size: 0.82rem; text-align: center; color: var(--ink-muted); }
-
-    @media (min-width: 40rem) {
-      .q-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem 1rem; }
-      .q-full { grid-column: 1 / -1; }
-    }
-    @media (min-width: 64rem) {
-      .quote { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(3rem, 6vw, 6rem); align-items: start; }
-      .quote-intro { position: sticky; top: calc(var(--header-h) + 2rem); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .mx-card, .mx-media img, .q-chip span, .quote-card .q-submit { transition: none; }
-    }
-  </style>
-  <link rel="stylesheet" href="css/luxury.css?v=1" />
 
   <script type="application/ld+json">
   {
@@ -1055,7 +86,7 @@
         <div class="hero-sticky-tape" aria-hidden="true"></div>
         <div>
           <div class="hero-sticky-date">
-            <span aria-hidden="true">📅</span> <span id="hero-sticky-date-text">Today</span>
+            <span id="hero-sticky-date-text">Today</span>
           </div>
           <p class="hero-sticky-content" id="hero-sticky-message">Eiiiii, angalau kunywa maji leo</p>
         </div>
@@ -1064,7 +95,6 @@
 
       <div class="container">
         <div class="hero-content">
-          <p class="hero-tag">Premium Mobile Bar · Kenya</p>
           <h1 id="hero-title">Cocktails. Celebrations. <span>Your kind of pour.</span></h1>
           <p class="hero-sub">Curated mobile bar experiences and craft cocktail catering made for good moments in Kenya.</p>
           <div class="hero-actions">
@@ -1087,7 +117,6 @@
 
           <div class="craft-intro">
             <div class="editorial-head" data-anim>
-              <p class="eyebrow">The Pour Poa difference</p>
               <h2>What is in your glass matters.</h2>
               <p>We believe every pour should feel intentional. Freshly squeezed juices, house-made small batch syrups and mixers, balanced flavour profiles without excess sugar, and complete ingredient transparency.</p>
             </div>
@@ -1098,23 +127,19 @@
           </div>
 
           <div class="craft-cards">
-            <article class="craft-card" data-num="01" data-anim>
-              <div class="card-backing" aria-hidden="true"><img src="images/craft-fresh.jpg" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'" /></div>
+            <article class="craft-card" data-anim>
               <h3>Fresh by Design</h3>
               <p>Citrus and fruit prepared in small batches for your event, avoiding concentrates whenever fresh options exist.</p>
             </article>
-            <article class="craft-card" data-num="02" data-anim style="--d:.1s">
-              <div class="card-backing" aria-hidden="true"><img src="images/craft-balance.jpg" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'" /></div>
+            <article class="craft-card" data-anim style="--d:.1s">
               <h3>Balanced, Not Just Sweet</h3>
               <p>Crafted so acidity, spirit, and aroma work together. Sweetness is a supporting actor, never the star.</p>
             </article>
-            <article class="craft-card" data-num="03" data-anim style="--d:.05s">
-              <div class="card-backing" aria-hidden="true"><img src="images/craft-transparent.jpg" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'" /></div>
+            <article class="craft-card" data-anim style="--d:.05s">
               <h3>Know What You are Drinking</h3>
               <p>Transparent ingredients and open communication. Ask us anything, we love talking about the pour.</p>
             </article>
-            <article class="craft-card" data-num="04" data-anim style="--d:.15s">
-              <div class="card-backing" aria-hidden="true"><img src="images/craft-care.jpg" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'" /></div>
+            <article class="craft-card" data-anim style="--d:.15s">
               <h3>Made with Care</h3>
               <p>Attention from the first pour to the last garnish. Presentation is part of the experience.</p>
             </article>
@@ -1128,7 +153,6 @@
     <section class="section section-dark service-section" id="service">
       <div class="container">
         <div class="editorial-head" data-anim>
-          <p class="eyebrow">How we work</p>
           <h2>Service is part of the pour</h2>
           <p>We do not just serve drinks. We serve people.</p>
         </div>
@@ -1140,39 +164,33 @@
         <!-- Connected flow: Listen, Personalise, Deliver, Listen Again -->
         <ol class="flow" aria-label="The Pour Poa service flow">
           <li class="flow-item" data-anim>
-            <span class="flow-node" aria-hidden="true">01</span>
-            <div class="flow-card" data-num="1">
+            <div class="flow-card">
               <h3>Listen</h3>
               <p>We start by understanding your event, guests, and vibe.</p>
             </div>
           </li>
           <li class="flow-item" data-anim style="--d:.1s">
-            <span class="flow-node" aria-hidden="true">02</span>
-            <div class="flow-card" data-num="2">
+            <div class="flow-card">
               <h3>Personalise</h3>
               <p>Menus, flow, and service style tailored to you.</p>
             </div>
           </li>
           <li class="flow-item" data-anim style="--d:.2s">
-            <span class="flow-node" aria-hidden="true">03</span>
-            <div class="flow-card" data-num="3">
+            <div class="flow-card">
               <h3>Deliver</h3>
-              <p>Professional setup, polished service, and seamless flow.</p>
+              <p>Professional setup, polished service, and a bar that keeps moving.</p>
             </div>
           </li>
           <li class="flow-item" data-anim style="--d:.3s">
-            <span class="flow-node" aria-hidden="true">04</span>
-            <div class="flow-card" data-num="4">
+            <div class="flow-card">
               <h3>Listen Again</h3>
               <p>We check in and refine so the experience stays on point.</p>
-              <span class="flow-loop-tag" aria-hidden="true">↻ Back to Listen</span>
             </div>
           </li>
         </ol>
 
         <div class="promise-panel" id="promise" data-anim>
-          <p class="label">The Pour Poa Promise</p>
-          <p>Fresh ingredients. Thoughtful cocktails.<br />Exceptional service.</p>
+          <p>Fresh ingredients. Thoughtful cocktails. Exceptional service.</p>
         </div>
       </div>
     </section>
@@ -1181,7 +199,6 @@
     <section class="section section-light occasions-section" id="occasions">
       <div class="container">
         <div class="editorial-head" data-anim>
-          <p class="eyebrow">Occasions</p>
           <h2>Mobile bar experiences for every celebration</h2>
           <p>Comprehensive mobile bar setups, curated menus, professional mixology, garnishes, and hospitality for events of every size.</p>
         </div>
@@ -1231,7 +248,7 @@
             </figure>
             <div class="occ-body">
               <h3>Corporate Events</h3>
-              <p>Polished, punctual, and aligned with your image: a mobile bar setup that keeps networking relaxed and service seamless, with menus tailored to your guests and budget.</p>
+              <p>Polished, punctual, and aligned with your image: a mobile bar setup that keeps networking relaxed and service smooth, with menus tailored to your guests and budget.</p>
               <ul class="occ-chips" role="list">
                 <li>Corporate Events</li>
               </ul>
@@ -1265,7 +282,6 @@
     <section class="section section-dark menu-showcase" id="menu">
       <div class="container">
         <div class="editorial-head" data-anim>
-          <p class="eyebrow">The menu</p>
           <h2>Cocktail Menu Showcase</h2>
           <p>A taste of what we pour. Full menus are tailored to your event.</p>
         </div>
@@ -1283,8 +299,7 @@
           </figure>
           <div class="mx-body">
             <h3>Kenyan Sour</h3>
-            <p class="mx-tag">House Signature</p>
-            <p class="mx-profile">Silky · Citrus · Classic</p>
+            <p class="mx-profile">House Signature. Silky · Citrus · Classic</p>
             <p class="mx-copy">Whiskey softened with fresh lemon and house syrup, shaken with egg white into a velvety, balanced foam.</p>
           </div>
         </article>
@@ -1456,17 +471,16 @@
     <!-- Bespoke -->
     <section class="section section-light bespoke-section" id="bespoke" aria-labelledby="bespoke-title">
       <div class="container">
-        <div class="bespoke-panel filigree" data-anim>
+        <div class="bespoke-panel" data-anim>
           <header class="bespoke-head">
-            <span class="ornament" aria-hidden="true"></span>
             <h2 id="bespoke-title">Your event. Your vibe. Your menu.</h2>
             <p>We avoid standard formulas. Signature drinks can be named after your event or hosts. Menus pair with your food themes. We adapt to your venue and work within tailored budget options so the pour feels personal.</p>
           </header>
           <ul class="bespoke-list" role="list" data-stagger>
-            <li class="bespoke-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16v4M17 18h4"/></svg></span><span>Signature drinks named for your event or hosts</span></li>
-            <li class="bespoke-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/></svg></span><span>Menu pairing with food themes</span></li>
-            <li class="bespoke-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.3-6-10a6 6 0 1112 0c0 4.7-6 10-6 10z"/><circle cx="12" cy="11" r="2.2"/></svg></span><span>Venue adaptation and flow planning</span></li>
-            <li class="bespoke-item"><span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16M4 16h16"/><circle cx="9" cy="8" r="2.2"/><circle cx="15" cy="16" r="2.2"/></svg></span><span>Tailored budget options</span></li>
+            <li class="bespoke-item"><span>Signature drinks named for your event or hosts</span></li>
+            <li class="bespoke-item"><span>Menu pairing with food themes</span></li>
+            <li class="bespoke-item"><span>Venue adaptation and flow planning</span></li>
+            <li class="bespoke-item"><span>Tailored budget options</span></li>
           </ul>
           <div class="bespoke-cta">
             <a href="#contact" class="btn btn-primary btn-lg">Plan my menu</a>
@@ -1483,7 +497,6 @@
 
           <!-- Left column: header -->
           <header class="estimator-intro" data-anim>
-            <p class="estimator-eyebrow">Plan your pour</p>
             <h2>Event Cost Estimator</h2>
             <p>Get a quick estimate in KSh. Final quotes are confirmed after we discuss your details.</p>
           </header>
@@ -1517,7 +530,7 @@
                 <label class="package-option">
                   <input type="radio" name="package" value="cocktails" />
                   <strong>Cocktails Only</strong>
-                  <span>Craft cocktails focus</span>
+                  <span>Craft cocktail focus</span>
                 </label>
                 <label class="package-option">
                   <input type="radio" name="package" value="mocktails" />
@@ -1528,9 +541,8 @@
             </div>
 
             <div class="estimate-result">
-              <p class="label">Estimated package range</p>
-              <p class="range" id="estimate-range" aria-live="polite">KSh 85,000 – 120,000</p>
-              <p class="note">Indicative only. Includes setup and service. Alcohol supply can be client provided or arranged.</p>
+                            <p class="range" id="estimate-range" aria-live="polite">KSh 85,000 – 120,000</p>
+              <p class="note">Estimated package range, indicative only. Includes setup and service. Alcohol supply can be client provided or arranged.</p>
               <a href="#contact" id="lock-estimate" class="btn btn-primary">Request a Quote for This Estimate</a>
             </div>
           </div>
@@ -1542,7 +554,7 @@
     <!-- Feedback -->
     <section class="section section-light feedback-section" id="feedback" aria-labelledby="feedback-heading">
       <div class="container">
-        <div class="feedback-panel filigree" data-anim>
+        <div class="feedback-panel" data-anim>
           <div class="feedback-copy">
             <h2 id="feedback-heading">How did we pour?</h2>
             <p>Your feedback helps us keep the experience focused and precise. Tell us what worked and what could be better.</p>
@@ -1562,7 +574,6 @@
         <div class="quote">
 
           <div class="quote-intro" data-anim>
-            <p class="eyebrow">Let us plan your pour</p>
             <h2>Request a Quote</h2>
             <p>Tell us about your event. We will reply with a tailored proposal via WhatsApp.</p>
             <ul class="quote-points" role="list">
@@ -1577,7 +588,7 @@
             </div>
           </div>
 
-          <form id="enquiry-form" class="quote-card filigree" data-anim style="--d:.1s">
+          <form id="enquiry-form" class="quote-card" data-anim style="--d:.1s">
             <div class="q-grid">
               <div class="q-field">
                 <label for="enq-name">Name *</label>
@@ -1645,7 +656,6 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <span class="ornament footer-ornament" aria-hidden="true"></span>
       <div class="footer-grid">
         <div>
           <h4>Pour Poa</h4>
@@ -1678,7 +688,6 @@
   <div class="modal-overlay" id="feedback-modal">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="feedback-title">
       <button type="button" class="modal-close" id="close-feedback" aria-label="Close">×</button>
-      <span class="ornament modal-ornament" aria-hidden="true"></span>
       <h3 id="feedback-title">How did we pour?</h3>
       <p class="sub">Rate your experience, every detail helps.</p>
 
