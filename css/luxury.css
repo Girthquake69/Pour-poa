@@ -705,3 +705,141 @@ h1, h2, h3 {
   justify-content: center;
 }
 
+
+/* ---------- Full-viewport opening hero + refined mobile layout ---------- */
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  box-sizing: border-box;
+}
+
+@media (max-width: 47.99rem) {
+  /* The opening view is one complete screen; the next section starts below it. */
+  .hero {
+    height: 100vh;
+    height: 100svh;
+    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding-top: calc(var(--header-h, 4.75rem) + env(safe-area-inset-top, 0px));
+    padding-bottom: max(0.85rem, env(safe-area-inset-bottom, 0px));
+    align-items: center;
+    background-position: center;
+  }
+
+  .hero > .container {
+    width: 100%;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 36rem;
+    margin-inline: auto;
+    padding-block: clamp(0.8rem, 2.4svh, 1.5rem);
+    text-align: center;
+  }
+
+  .hero-tag {
+    justify-content: center;
+    margin-bottom: clamp(0.65rem, 1.8svh, 1rem);
+    font-size: clamp(0.72rem, 2.8vw, 0.88rem);
+    letter-spacing: 0.06em;
+  }
+
+  .hero-tag::before,
+  .hero-tag::after {
+    width: clamp(1rem, 5vw, 2rem);
+  }
+
+  .hero h1 {
+    margin-bottom: clamp(0.7rem, 2svh, 1.15rem);
+    font-size: clamp(2rem, 7.8vw, 3.05rem);
+    line-height: 0.99;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+  }
+
+  .hero-sub {
+    max-width: 31rem;
+    margin: 0 auto clamp(1rem, 2.5svh, 1.45rem);
+    font-size: clamp(0.9rem, 3.7vw, 1.05rem);
+    line-height: 1.45;
+    text-wrap: pretty;
+  }
+
+  .hero-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .hero-actions .btn,
+  .hero-actions .btn-lg {
+    width: 100%;
+    max-width: 25rem;
+    min-height: clamp(2.85rem, 7.5svh, 3.35rem);
+    padding: 0.7rem 1rem;
+    font-size: 0.94rem;
+  }
+
+  .hero-trust {
+    display: grid;
+    justify-content: stretch;
+    gap: clamp(0.45rem, 1.4svh, 0.75rem);
+    margin: clamp(0.85rem, 2.3svh, 1.3rem) auto 0;
+    max-width: 27rem;
+    text-align: left;
+    font-size: clamp(0.76rem, 3.15vw, 0.88rem);
+    line-height: 1.3;
+  }
+
+  .hero-trust li {
+    gap: 0.65rem;
+    align-items: flex-start;
+  }
+
+  .hero-trust li::before {
+    width: 0.34rem;
+    height: 0.34rem;
+    margin-top: 0.32rem;
+  }
+
+  .hero-trust a {
+    text-underline-offset: 0.2em;
+  }
+
+  /* Keep the beloved mobile daily-note sticker; hide only the large desktop paper note. */
+  .hero-sticky-note {
+    display: none !important;
+  }
+
+  /* Preserve the small floating sticker and its expandable note on mobile. */
+  .sticky-fab {
+    display: flex !important;
+    position: fixed;
+    top: calc(env(safe-area-inset-top, 0px) + 8.25rem);
+    right: 1rem;
+    z-index: 30;
+  }
+
+  .sticky-popover[hidden] {
+    display: none !important;
+  }
+
+  /* Short phones: tighten the content, never clip it or reveal the next section. */
+  @media (max-height: 740px) {
+    .hero-content { padding-block: 0.25rem; }
+    .hero h1 { font-size: clamp(1.8rem, 7vw, 2.55rem); }
+    .hero-sub { margin-bottom: 0.75rem; line-height: 1.35; }
+    .hero-trust { margin-top: 0.7rem; gap: 0.38rem; }
+    .hero-actions .btn,
+    .hero-actions .btn-lg { min-height: 2.65rem; }
+  }
+}
