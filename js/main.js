@@ -336,4 +336,67 @@ document.addEventListener('DOMContentLoaded', () => {
       waFloat.setAttribute('aria-hidden', String(hide));
     }, { threshold: 0.15 }).observe(contactSection);
   }
+
+  // Mobile: hide header on scroll down, show on scroll up
+  (function () {
+    const header = document.querySelector('.header');
+    if (!header) return;
+    let lastY = window.scrollY;
+    let ticking = false;
+    const mq = window.matchMedia('(max-width: 47.99rem)');
+    const update = () => {
+      const y = window.scrollY;
+      if (!mq.matches) {
+        header.classList.remove('header-hidden');
+        lastY = y;
+        ticking = false;
+        return;
+      }
+      if (y > lastY + 8 && y > 80) {
+        header.classList.add('header-hidden');
+      } else if (y < lastY - 8) {
+        header.classList.remove('header-hidden');
+      }
+      lastY = y;
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }, { passive: true });
+  })();
+
+  // Mobile sticky-note FAB + popover
+  (function () {
+    const fab = document.getElementById('sticky-fab');
+    const pop = document.getElementById('sticky-popover');
+    const closeBtn = document.getElementById('sticky-popover-close');
+    if (!fab || !pop) return;
+
+    const open = () => {
+      pop.hidden = false;
+      fab.setAttribute('aria-expanded', 'true');
+      requestAnimationFrame(() => pop.classList.add('is-open'));
+    };
+    const close = () => {
+      pop.classList.remove('is-open');
+      fab.setAttribute('aria-expanded', 'false');
+      setTimeout(() => { pop.hidden = true; }, 220);
+    };
+
+    fab.addEventListener('click', () => {
+      if (pop.hidden) open();
+      else close();
+    });
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    pop.addEventListener('click', (e) => {
+      if (e.target === pop) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !pop.hidden) close();
+    });
+  })();
+
 });
