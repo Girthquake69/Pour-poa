@@ -2210,3 +2210,268 @@ html {
   }
 }
 
+
+/* ==========================================================================
+   Master Prompt Updates — eyebrows, header hide, sticky mobile, steps, menu,
+   estimator, feedback, CTAs, bespoke full-bleed
+   ========================================================================== */
+
+/* 1. Remove decorative eyebrow / subtitle dashes */
+.eyebrow::before,
+.estimator-eyebrow::before,
+.hero-tag::before,
+.hero-tag::after {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+}
+
+.eyebrow,
+.estimator-eyebrow,
+.hero-tag {
+  gap: 0;
+}
+
+/* 2. Header hide on scroll (mobile) */
+.header {
+  transition: transform 280ms var(--ease-out), opacity 280ms var(--ease-out),
+    background-color 200ms var(--ease-out), border-color 200ms var(--ease-out),
+    box-shadow 200ms var(--ease-out);
+}
+
+.header.header-hidden {
+  transform: translate(-50%, -120%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 3. Sticky note: desktop keep, mobile FAB + popover */
+@media (max-width: 767.98px) {
+  .hero-sticky-note--desktop {
+    display: none !important;
+  }
+
+  .sticky-fab {
+    position: fixed;
+    top: max(5.25rem, env(safe-area-inset-top, 0px) + 4.5rem);
+    right: max(0.85rem, env(safe-area-inset-right));
+    z-index: 950;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 0;
+    border-radius: 10px 10px 14px 6px;
+    background: #fff68f;
+    box-shadow: 3px 6px 16px rgba(0, 0, 0, 0.35);
+    transform: rotate(4deg);
+    cursor: pointer;
+    transition: transform 280ms var(--spring-pop), box-shadow 200ms var(--ease-out);
+  }
+
+  .sticky-fab:active {
+    transform: rotate(0deg) scale(0.94);
+  }
+
+  .sticky-fab-icon {
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
+  .sticky-popover {
+    position: fixed;
+    inset: 0;
+    z-index: 1600;
+    display: grid;
+    place-items: center;
+    padding: 1.25rem;
+    background: rgba(5, 28, 21, 0.55);
+    opacity: 0;
+    transition: opacity 200ms var(--ease-out);
+  }
+
+  .sticky-popover.is-open {
+    opacity: 1;
+  }
+
+  .sticky-popover[hidden] {
+    display: none;
+  }
+
+  .sticky-popover-inner {
+    position: relative;
+    width: min(300px, calc(100% - 1rem));
+    min-height: 200px;
+    padding: 1.5rem 1.25rem 1.1rem;
+    background: #fff68f;
+    box-shadow: 4px 12px 28px rgba(0, 0, 0, 0.4);
+    transform: rotate(-1.5deg) scale(0.92);
+    border-radius: 2px 2px 2px 14px;
+    font-family: 'Caveat', cursive, sans-serif;
+    color: #2c2c2c;
+    transition: transform 280ms var(--spring-soft);
+  }
+
+  .sticky-popover.is-open .sticky-popover-inner {
+    transform: rotate(-1.5deg) scale(1);
+  }
+
+  .sticky-popover-close {
+    position: absolute;
+    top: 0.35rem;
+    right: 0.4rem;
+    z-index: 2;
+    width: 2rem;
+    height: 2rem;
+    border: 0;
+    background: transparent;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: #555;
+    cursor: pointer;
+  }
+
+  .sticky-popover .hero-sticky-date {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #7a6e1a;
+  }
+
+  .sticky-popover .hero-sticky-content {
+    margin: 0;
+    font-size: 1.45rem;
+    line-height: 1.35;
+  }
+
+  .sticky-popover .hero-sticky-footer {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-align: right;
+    color: #777;
+  }
+}
+
+@media (min-width: 768px) {
+  .sticky-fab,
+  .sticky-popover {
+    display: none !important;
+  }
+}
+
+/* 3b. Hero CTA hierarchy (mobile) */
+@media (max-width: 47.99rem) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 20rem;
+    margin-inline: auto;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.8rem 1.25rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
+  }
+
+  .hero-actions .btn-primary {
+    background: var(--gold);
+    color: #0B3020;
+    border-color: var(--gold);
+    box-shadow: 0 10px 22px -10px rgba(197, 160, 89, 0.75);
+  }
+
+  .hero-actions .btn-primary:hover,
+  .hero-actions .btn-primary:focus-visible {
+    color: #0B3020;
+  }
+
+  .hero-actions .btn-outline {
+    background: transparent;
+    color: var(--champagne);
+    border-color: rgba(197, 160, 89, 0.55);
+    box-shadow: none;
+    opacity: 0.92;
+  }
+}
+
+/* 4. Process steps: hide outer nodes + connector on mobile */
+@media (max-width: 63.99rem) {
+  .flow::before {
+    display: none !important;
+  }
+
+  .flow-node {
+    display: none !important;
+  }
+
+  .flow-item {
+    margin-left: 0 !important;
+  }
+}
+
+/* 5. Menu: hide glass badges (removed from DOM; safety) */
+.mx-badge {
+  display: none !important;
+}
+
+/* Menu card text order already fixed in HTML (h3 → tag → profile → copy) */
+.mx-body h3 {
+  margin-bottom: 0.35rem;
+}
+
+.mx-body .mx-tag,
+.mx-body .mx-profile {
+  margin-bottom: 0.35rem;
+}
+
+/* Bespoke full-width on mobile */
+@media (max-width: 47.99rem) {
+  #bespoke .container {
+    padding-inline: 0;
+  }
+
+  .bespoke-panel {
+    border-radius: 0;
+    margin-inline: 0;
+    padding-inline: 1.25rem;
+  }
+}
+
+/* 7. Estimator: no range labels (removed from DOM) */
+.range-labels {
+  display: none !important;
+}
+
+.estimator-box input[type="range"] {
+  margin-bottom: 1.5rem;
+}
+
+/* 8. Feedback full-width on mobile */
+@media (max-width: 47.99rem) {
+  #feedback .container {
+    padding-inline: 0.75rem;
+  }
+
+  #feedback .feedback-panel {
+    width: 100%;
+    margin-inline: 0;
+    border-radius: 16px;
+    padding: 1.75rem 1.25rem;
+  }
+}
+
+
+.occ-includes { display: none !important; }
+
