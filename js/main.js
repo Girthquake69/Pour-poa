@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let i = 1; i <= 5; i++) {
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.textContent = '★';
+        btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg>';
         btn.dataset.value = i;
         btn.setAttribute('aria-label', i + (i === 1 ? ' star' : ' stars'));
         btn.setAttribute('aria-pressed', 'false');
