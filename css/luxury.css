@@ -612,3 +612,135 @@ h1, h2, h3 {
   .feedback-stars { color: var(--gold); }
   .bespoke-item, .feedback-stars svg, .wa-float { transition: none; }
 }
+
+/* ==========================================================================
+   14. Mobile + menu showcase refinements (appended)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+  /* Fluid scale: tighter section rhythm, calmer gutters, no sideways scroll */
+  :root {
+    --section-pad: clamp(3rem, 2rem + 5vw, 4rem);
+    --gutter: 1.25rem;
+  }
+
+  html, body { overflow-x: clip; }
+  .container { padding-inline: var(--gutter); }
+
+  /* Eyebrow banner: the "Premium mobile bar experiences" line is hidden */
+  .top-bar-tagline { display: none; }
+  .top-bar { padding: 0.45rem 0; }
+
+  /* Type scale */
+  .editorial-head,
+  .bespoke-head { gap: 1rem; margin-bottom: 1.75rem; }
+  .editorial-head h2,
+  .bespoke-head h2,
+  .estimator-intro h2,
+  .quote-intro h2,
+  .feedback-copy h2 { font-size: clamp(1.85rem, 1.3rem + 2.6vw, 2.35rem); line-height: 1.1; }
+  .editorial-head p,
+  .bespoke-head p,
+  .feedback-copy p,
+  .estimator-intro p,
+  .quote-intro > p { font-size: 1rem; line-height: 1.65; }
+
+  .hero-content { padding-block: clamp(2.5rem, 8vh, 4rem) clamp(2.5rem, 7vh, 3.5rem); }
+  .hero h1 { font-size: clamp(2.15rem, 1.4rem + 4.6vw, 2.75rem); }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { width: 100%; }
+  .hero-trust { flex-direction: column; align-items: center; gap: 0.5rem; margin-top: 1.75rem; }
+
+  /* Panels and grids: balanced padding and gaps */
+  .craft, .estimator-layout, .quote { gap: 2rem; }
+  .craft-cards { gap: 1rem; }
+  .craft-card, .flow-card { padding: 1.5rem 1.25rem; }
+  .flow { gap: 1.1rem; }
+  .promise-panel { padding: 2rem 1.5rem; }
+  .bespoke-panel { padding: 2.5rem 1.25rem; }
+  .bespoke-item { padding: 1.1rem; gap: 0.9rem; }
+  .feedback-panel { padding: 2.5rem 1.5rem; }
+  .quote-card { padding: 2.25rem 1.25rem; }
+  .menu-cta { padding: 1.5rem 1.25rem; }
+  .menu-cta .btn, .bespoke-cta .btn, .occ-cta .btn { width: 100%; }
+  .footer-grid { gap: 1.75rem; margin-bottom: 2rem; }
+
+  /* Occasions tabs: swipeable, thumb-sized */
+  .occ-tabs { width: 100%; scroll-snap-type: x proximity; }
+  .occ-tab { min-height: 2.75rem; scroll-snap-align: start; }
+
+  /* ---------- Menu showcase ---------- */
+  .menu-showcase .menu-tabs {
+    width: calc(100% + var(--gutter));
+    margin-right: calc(var(--gutter) * -1);   /* bleeds to the screen edge so the swipe is obvious */
+    padding: 0.3rem;
+    border-radius: 12px 0 0 12px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1.5rem;
+  }
+
+  .menu-showcase .menu-tabs::-webkit-scrollbar { display: none; }
+
+  .menu-showcase .menu-tab {
+    min-height: 2.75rem;
+    padding: 0.7rem 1.1rem;
+    font-size: 0.95rem;
+    flex: 0 0 auto;
+    white-space: nowrap;
+    scroll-snap-align: start;
+  }
+
+  .menu-showcase .menu-panel.active { gap: 1rem; }
+
+  .mx-card--hero .mx-media,
+  .mx-media { aspect-ratio: 16 / 11; }
+
+  .mx-body { padding: 1.1rem 1.15rem 1.35rem; gap: 0.4rem; }
+  .mx-card--hero .mx-body { padding: 1.25rem 1.15rem 1.5rem; }
+  .mx-body h3 { font-size: 1.3rem; }
+  .mx-card--hero h3 { font-size: 1.6rem; }
+  .mx-copy, .mx-card--hero .mx-copy { font-size: 0.97rem; line-height: 1.6; }
+  .mx-profile { font-size: 0.72rem; letter-spacing: 0.12em; }
+  .mx-badge { left: 0.6rem; bottom: 0.6rem; }
+
+  /* Hover lifts don't belong on touch; give a press state instead */
+  .mx-card:active { transform: scale(0.99); }
+
+  /* ---------- Sticky note: a compact marginal note, not a second hero block ---------- */
+  .hero-sticky-note {
+    order: -1;
+    align-self: flex-start;
+    width: min(15.5rem, calc(100% - 2.5rem));
+    min-height: 0;
+    margin: 1.25rem 0 0 var(--gutter);
+    padding: 1.1rem 1rem 0.8rem;
+    transform: rotate(-1.5deg);
+    box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.45);
+    gap: 0.5rem;
+  }
+  .hero-sticky-tape { width: 4.5rem; height: 1.2rem; top: -0.6rem; }
+  .hero-sticky-date { margin-bottom: 0.4rem; padding-bottom: 3px; font-size: 0.95rem; }
+  .hero-sticky-content { font-size: 1.25rem; line-height: 1.3; }
+  .hero-sticky-footer { margin-top: 0.4rem; font-size: 0.85rem; }
+
+  /* ---------- Sticky WhatsApp ---------- */
+  .wa-float {
+    right: max(1rem, env(safe-area-inset-right));
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    height: 3.25rem;
+    padding: 0 1rem 0 0.9rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .wa-label { display: none; }
+  .wa-float { width: 3.25rem; padding: 0; justify-content: center; }
+  .q-chip span { padding: 0.55rem 0.8rem; }
+}
