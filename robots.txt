@@ -1,0 +1,7 @@
+# Pour Poa — https://pourpoa.store
+User-agent: *
+Allow: /
+Disallow: /css/
+Disallow: /js/
+
+Sitemap: https://pourpoa.store/sitemap.xml
