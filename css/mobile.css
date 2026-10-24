@@ -5,6 +5,9 @@
    crops, 20px margins, 44px+ touch targets, flat tonal surfaces, no glass.
    ========================================================================== */
 
+/* Slideshow container exists in the markup but is phone-only */
+.hero-slides { display: none; }
+
 @media (max-width: 47.99rem) {
 
   /* ---------- Tokens ---------- */
@@ -108,10 +111,8 @@
     justify-content: flex-end;
     align-items: stretch;
     background-color: #041913 !important;
-    background-image: url('../images/menu-berry-basil-smash.jpg') !important;
-    background-size: cover !important;
-    background-position: 58% 20% !important;
-    background-repeat: no-repeat !important;
+    background-image: none !important;
+    touch-action: pan-y;
   }
   .hero::before {
     background: linear-gradient(180deg,
@@ -152,9 +153,48 @@
     color: var(--off-white);
   }
 
+  /* Sticker lives in the hero's normal flow context: it scrolls away with the page */
   .sticky-fab {
-    top: calc(env(safe-area-inset-top, 0px) + var(--header-h) + 0.75rem) !important;
+    position: absolute !important;
+    top: calc(env(safe-area-inset-top, 0px) + var(--header-h) + 0.5rem) !important;
     right: max(1rem, env(safe-area-inset-right, 0px)) !important;
+    z-index: 5 !important;
+  }
+
+
+  /* ---------- Hero slideshow ---------- */
+  .hero-slides { display: block; position: absolute; inset: 0; z-index: auto; overflow: hidden; background: #041913; }
+  .hero::before { z-index: 1; }
+  .hero > .container { position: relative; z-index: 2; }
+  .hero-slide { position: absolute; inset: 0; z-index: 0; margin: 0; opacity: 0; transition: opacity 900ms var(--ease-out); will-change: opacity; }
+  .hero-slide.is-active { opacity: 1; }
+  .hero-slide img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 30%); transform: scale(1.07); transition: transform 0s linear 1s; }
+  .hero-slide.is-active img { transform: scale(1); transition: transform 7s cubic-bezier(0.2, 0.6, 0.2, 1); }
+
+  .hero-slides-ui {
+    position: absolute; z-index: 5;
+    top: calc(env(safe-area-inset-top, 0px) + var(--header-h) + 0.5rem);
+    left: max(var(--gutter), env(safe-area-inset-left, 0px));
+    display: flex; align-items: center; gap: 0.25rem;
+  }
+  .hero-dot, .hero-pause { appearance: none; border: 0; background: transparent; padding: 0; cursor: pointer; }
+  .hero-dot { position: relative; flex: 0 0 clamp(1.75rem, 8.5vw, 2.5rem); height: 2.75rem; }
+  .hero-dot::before, .hero-dot i { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 3px; margin-top: -1.5px; border-radius: 2px; }
+  .hero-dot::before { background: rgba(244, 239, 228, 0.35); }
+  .hero-dot i { background: var(--gold-light); transform: scaleX(0); transform-origin: left; }
+  .hero-dot.is-done i { transform: scaleX(1); }
+  .hero-dot.is-active i { animation: heroFill var(--slide-ms, 5500ms) linear forwards; }
+  .hero-slides-ui.is-paused .hero-dot.is-active i { animation-play-state: paused; }
+  .hero-slides-ui.is-static .hero-dot.is-active i { animation: none; transform: scaleX(1); }
+  @keyframes heroFill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .hero-pause { width: 2.75rem; height: 2.75rem; display: grid; place-items: center; margin-left: 0.25rem; color: var(--off-white); }
+  .hero-pause span { display: block; width: 0.75rem; height: 0.875rem; border-left: 3px solid currentColor; border-right: 3px solid currentColor; }
+  .hero-slides-ui.is-paused .hero-pause span { width: 0; height: 0; border: 0; border-left: 0.75rem solid currentColor; border-top: 0.4375rem solid transparent; border-bottom: 0.4375rem solid transparent; }
+  .hero-dot:active, .hero-pause:active { opacity: 0.7; }
+  .hero-dot:focus-visible, .hero-pause:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; border-radius: 6px; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-slide { transition: none; }
+    .hero-slide img, .hero-slide.is-active img { transform: none; transition: none; }
   }
 
   /* ---------- Shared section type ---------- */
