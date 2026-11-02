@@ -146,7 +146,7 @@ p {
   background: var(--champagne);
   color: var(--emerald-deeper);
   font-weight: 600;
-  transform: translateY(-100%);
+  transform: translateY(-150%); /* -100% left a 1px sliver visible at the top of high-DPI phones */
   transition: transform var(--dur) var(--ease);
 }
 
@@ -196,8 +196,11 @@ input[type="radio"] {
   font-weight: 500;
 }
 
-.top-bar a:hover {
-  color: var(--champagne);
+@media (hover: hover) and (pointer: fine) {
+  .top-bar a:hover {
+    color: var(--champagne);
+  }
+
 }
 
 /* ---------- Header ---------- */
@@ -267,16 +270,30 @@ input[type="radio"] {
   transition: transform 160ms var(--ease-out);
 }
 
-.nav a:hover,
 .nav a.active {
   color: var(--champagne);
 }
 
-.nav a:hover::after,
+@media (hover: hover) and (pointer: fine) {
+  .nav a:hover {
+    color: var(--champagne);
+  }
+
+}
+
 .nav a.active::after {
   transform: scaleX(1);
   transform-origin: left;
   transition-duration: 280ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+    transition-duration: 280ms;
+  }
+
 }
 
 .menu-toggle {
@@ -385,7 +402,7 @@ input[type="radio"] {
   min-height: 92vh;
   min-height: 92svh;
   overflow: hidden;
-  background: var(--emerald-dark) url('../images/background.png') center / cover no-repeat;
+  background: var(--emerald-dark) url('../images/background.webp') center / cover no-repeat;
 }
 
 .hero::before {
@@ -687,8 +704,11 @@ input[type="radio"] {
   transition: color 160ms var(--ease-out), border-color 160ms var(--ease-out);
 }
 
-.menu-tab:hover {
-  color: var(--ink);
+@media (hover: hover) and (pointer: fine) {
+  .menu-tab:hover {
+    color: var(--ink);
+  }
+
 }
 
 .menu-tab.active {
@@ -894,8 +914,11 @@ input[type="range"] {
   color: var(--ink-muted);
 }
 
-.estimator-box .package-option:hover {
-  background: rgba(18, 38, 30, 0.06);
+@media (hover: hover) and (pointer: fine) {
+  .estimator-box .package-option:hover {
+    background: rgba(18, 38, 30, 0.06);
+  }
+
 }
 
 .estimator-box .package-option:has(input:focus-visible) {
@@ -1296,10 +1319,13 @@ input[type="range"] {
   line-height: 1.7;
 }
 
-.footer a:hover {
-  color: var(--champagne);
-  text-decoration: underline;
-  text-underline-offset: 0.25em;
+@media (hover: hover) and (pointer: fine) {
+  .footer a:hover {
+    color: var(--champagne);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+
 }
 
 .footer .disclaimer {
@@ -1775,8 +1801,11 @@ input[type="range"] {
   transition: transform 420ms var(--spring-pop), background-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
 }
 
-.estimator-box input[type="range"]:hover::-webkit-slider-thumb {
-  transform: scale(1.12);
+@media (hover: hover) and (pointer: fine) {
+  .estimator-box input[type="range"]:hover::-webkit-slider-thumb {
+    transform: scale(1.12);
+  }
+
 }
 
 .estimator-box input[type="range"]:active::-webkit-slider-thumb {
@@ -1814,8 +1843,11 @@ input[type="range"] {
   transition: transform 420ms var(--spring-pop), background-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
 }
 
-.estimator-box input[type="range"]:hover::-moz-range-thumb {
-  transform: scale(1.12);
+@media (hover: hover) and (pointer: fine) {
+  .estimator-box input[type="range"]:hover::-moz-range-thumb {
+    transform: scale(1.12);
+  }
+
 }
 
 .estimator-box input[type="range"]:active::-moz-range-thumb {
@@ -1897,9 +1929,12 @@ input[type="range"] {
   pointer-events: none;
 }
 
-.estimator-box .package-option:hover {
-  background: rgba(197, 160, 89, 0.1);
-  border-color: var(--gold);
+@media (hover: hover) and (pointer: fine) {
+  .estimator-box .package-option:hover {
+    background: rgba(197, 160, 89, 0.1);
+    border-color: var(--gold);
+  }
+
 }
 
 .estimator-box .package-option.active {
@@ -1971,7 +2006,6 @@ input[type="range"] {
   line-height: 1.6;
   color: var(--gold-light);
 }
-
 
 /* ==========================================================================
    REQUIRED UPDATES 2025 — floating header, mobile scale, WA circular, feedback center
@@ -2051,8 +2085,11 @@ input[type="range"] {
   background: rgba(197, 160, 89, 0.12);
 }
 
-.menu-toggle:hover {
-  background: rgba(197, 160, 89, 0.22);
+@media (hover: hover) and (pointer: fine) {
+  .menu-toggle:hover {
+    background: rgba(197, 160, 89, 0.22);
+  }
+
 }
 
 /* Mobile drawer under the floating pill */
@@ -2209,7 +2246,6 @@ html {
     transform: scale(1.08);
   }
 }
-
 
 /* ==========================================================================
    Master Prompt Updates — eyebrows, header hide, sticky mobile, steps, menu,
@@ -2392,9 +2428,15 @@ html {
     box-shadow: 0 10px 22px -10px rgba(197, 160, 89, 0.75);
   }
 
-  .hero-actions .btn-primary:hover,
   .hero-actions .btn-primary:focus-visible {
     color: #0B3020;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .hero-actions .btn-primary:hover {
+      color: #0B3020;
+    }
+
   }
 
   .hero-actions .btn-outline {
@@ -2471,7 +2513,6 @@ html {
     padding: 1.75rem 1.25rem;
   }
 }
-
 
 .occ-includes { display: none !important; }
 

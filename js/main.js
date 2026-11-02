@@ -3,6 +3,16 @@
 document.addEventListener('DOMContentLoaded', () => {
   const WA_NUMBER = '254708736114';
 
+  // Page scroll lock for overlays. Lenis (desktop smooth scroll) listens to the wheel itself,
+  // so overflow:hidden alone is not enough; kinetic.js publishes window.__pourScroll when it runs.
+  const scrollLock = on => {
+    const s = window.__pourScroll;
+    if (s) (on ? s.lock : s.unlock)();
+  };
+  const inertBackground = on => {
+    document.querySelectorAll('.header, main, .footer, .wa-float').forEach(el => { el.inert = on; });
+  };
+
   // Year
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -25,13 +35,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.nav');
   if (toggle && nav) {
-    toggle.setAttribute('aria-expanded', 'false');
+    const MENU_ICON = 'M4 6h16M4 12h16M4 18h16';
+    const CLOSE_ICON = 'M6 6l12 12M18 6L6 18';
+    const phone = window.matchMedia('(max-width: 47.99rem)');
+    const iconPath = toggle.querySelector('path');
     const setOpen = open => {
       nav.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (iconPath) iconPath.setAttribute('d', open ? CLOSE_ICON : MENU_ICON);
+      scrollLock(open && phone.matches);
     };
+    setOpen(false);
     toggle.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
     nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setOpen(false)));
+    // rotating a phone or resizing past the breakpoint must never leave the page locked
+    if (phone.addEventListener) phone.addEventListener('change', () => { if (!phone.matches) setOpen(false); });
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && nav.classList.contains('open')) { setOpen(false); toggle.focus(); }
     });
@@ -50,18 +69,38 @@ document.addEventListener('DOMContentLoaded', () => {
     spyTargets.forEach(t => spy.observe(t));
   }
 
-  // Menu tabs
-  const tabs = document.querySelectorAll('.menu-tab');
+  // Menu tabs (tab semantics: click, Arrow keys, Home/End)
+  const tabs = Array.from(document.querySelectorAll('.menu-tab'));
   const panels = document.querySelectorAll('.menu-panel');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.dataset.tab;
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      panels.forEach(p => {
-        p.classList.remove('active');
-        if (p.id === 'panel-' + target) p.classList.add('active');
-      });
+  const selectTab = (tab, focus) => {
+    const target = tab.dataset.tab;
+    let shown = null;
+    tabs.forEach(t => {
+      const on = t === tab;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach(p => {
+      const on = p.id === 'panel-' + target;
+      p.classList.toggle('active', on);
+      if (on) shown = p;
+    });
+    if (shown) {
+      shown.scrollLeft = 0; // the phone carousel always starts at its first card
+      document.dispatchEvent(new CustomEvent('pour:panelchange', { detail: { panel: shown } }));
+    }
+    if (focus) tab.focus();
+  };
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => selectTab(tab, false));
+    tab.addEventListener('keydown', e => {
+      let next = null;
+      if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+      else if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === 'Home') next = tabs[0];
+      else if (e.key === 'End') next = tabs[tabs.length - 1];
+      if (next) { e.preventDefault(); selectTab(next, true); }
     });
   });
 
@@ -206,6 +245,8 @@ document.addEventListener('DOMContentLoaded', () => {
     resetFeedback();
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
+    scrollLock(true);
+    inertBackground(true);
     requestAnimationFrame(() => closeBtn?.focus());
   }
 
@@ -214,6 +255,8 @@ document.addEventListener('DOMContentLoaded', () => {
     clearTimeout(closeTimer);
     modal.classList.remove('open');
     document.body.style.overflow = '';
+    inertBackground(false);
+    scrollLock(false);
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
 
@@ -241,9 +284,29 @@ document.addEventListener('DOMContentLoaded', () => {
   if (feedbackForm) {
     feedbackForm.addEventListener('submit', e => {
       e.preventDefault();
+      const fd = new FormData(feedbackForm);
+      const stars = k => (ratings[k] ? ratings[k] + '/5' : 'not rated');
+      const lines = [
+        'Hi Pour Poa! Here is my feedback.',
+        '',
+        `Overall experience: ${stars('overall')}`,
+        `Drink quality: ${stars('quality')}`,
+        `Presentation: ${stars('presentation')}`,
+        `Service: ${stars('service')}`,
+        `Value for money: ${stars('value')}`,
+        '',
+        `What I loved: ${fd.get('loved') || '—'}`,
+        `What could improve: ${fd.get('improve') || '—'}`,
+        `Would recommend: ${fd.get('recommend') || '—'}`,
+        `OK to use as a testimonial: ${fd.get('testimonial') ? 'Yes' : 'No'}`
+      ];
+      const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+      const w = window.open(url, '_blank');
+      if (w) w.opener = null;
+      else window.location.href = url;   // popup blocked: continue in this tab
       feedbackForm.style.display = 'none';
       feedbackSuccess.classList.add('show');
-      closeTimer = setTimeout(closeModal, 2600);
+      closeTimer = setTimeout(closeModal, 4000);
     });
   }
 
@@ -366,6 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(update);
       }
     }, { passive: true });
+    header.addEventListener('focusin', () => header.classList.remove('header-hidden'));
   })();
 
   // Mobile sticky-note FAB + popover
@@ -375,15 +439,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.getElementById('sticky-popover-close');
     if (!fab || !pop) return;
 
+    let hideTimer = null;
     const open = () => {
+      clearTimeout(hideTimer);
       pop.hidden = false;
       fab.setAttribute('aria-expanded', 'true');
-      requestAnimationFrame(() => pop.classList.add('is-open'));
+      requestAnimationFrame(() => {
+        pop.classList.add('is-open');
+        if (closeBtn) closeBtn.focus({ preventScroll: true });
+      });
     };
     const close = () => {
+      if (pop.hidden) return;
       pop.classList.remove('is-open');
       fab.setAttribute('aria-expanded', 'false');
-      setTimeout(() => { pop.hidden = true; }, 220);
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => { pop.hidden = true; }, 220);
+      fab.focus({ preventScroll: true });
     };
 
     fab.addEventListener('click', () => {

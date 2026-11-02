@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
   <meta name="theme-color" content="#082A1F" />
   <title>Pour Poa | Cocktails. Celebrations. Your kind of pour.</title>
   <meta name="description" content="Premium Kenyan mobile bar experience and bespoke event cocktail service. Fresh ingredients, thoughtful cocktails, exceptional service." />
@@ -42,12 +42,14 @@
   }
   </script>
 
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="preload" as="image" href="images/background.png" fetchpriority="high" media="(min-width: 48rem)" />
+  <link rel="preload" as="image" href="images/background.webp" fetchpriority="high" media="(min-width: 48rem)" />
   <link rel="preload" as="image" href="images/menu-classic-mimosa.jpg" fetchpriority="high" media="(max-width: 47.99rem)" />
-  <link rel="stylesheet" href="css/style.css?v=6" />
+  <link rel="stylesheet" href="css/style.css?v=7" />
+  <link rel="stylesheet" href="css/kinetic.css?v=3" />
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
   <link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16" />
@@ -75,7 +77,7 @@
 
     .hero-sticky-note {
       position: absolute;
-      top: 25px;
+      top: 6.25rem;          /* clear of the header pill */
       right: 40px;
       z-index: 10;
       width: 300px;          /* 20% larger */
@@ -765,7 +767,7 @@
       background:
         radial-gradient(70% 55% at 12% 0%, rgba(201, 161, 91, 0.16), transparent 62%),
         linear-gradient(180deg, rgba(10, 46, 35, 0.86), rgba(10, 46, 35, 0.95)),
-        url('images/background.png') center / cover no-repeat;
+        url('images/background.webp') center / cover no-repeat;
       pointer-events: none;
     }
 
@@ -990,7 +992,7 @@
     }
     textarea.q-input { min-height: 7rem; resize: vertical; }
     .q-input::placeholder { color: var(--ink); opacity: 0.4; }
-    .q-input:hover { border-color: #cfcbc0; }
+    @media (hover: hover) and (pointer: fine) { .q-input:hover { border-color: #cfcbc0; } }
     .q-input:focus { outline: 0; border-color: var(--emerald); box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.3); }
 
     .q-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
@@ -1033,26 +1035,14 @@
       .mx-card, .mx-media img, .q-chip span, .quote-card .q-submit { transition: none; }
     }
   </style>
-  <link rel="stylesheet" href="css/luxury.css?v=4" />
-  <link rel="stylesheet" href="css/mobile.css?v=1" />
+  <link rel="stylesheet" href="css/luxury.css?v=5" />
+  <link rel="stylesheet" href="css/mobile.css?v=2" />
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Pour Poa",
-    "description": "Premium mobile bar experiences and bespoke event cocktail service.",
-    "telephone": "+254708736114",
-    "email": "pourpoakenya@gmail.com",
-    "areaServed": "Nairobi, Kenya"
-  }
-  </script>
 </head>
 <body>
+  <div class="k-scroll" id="k-scroll" aria-hidden="true"></div>
 
   <a class="skip-link" href="#main">Skip to content</a>
-
-</div>
 
   <!-- Header -->
   <header class="header">
@@ -1062,7 +1052,7 @@
         <span class="logo-text">Pour Poa</span>
       </a>
 
-      <nav class="nav" id="main-nav" aria-label="Primary">
+      <nav class="nav" id="main-nav" aria-label="Primary" data-lenis-prevent>
         <a href="#difference">Difference</a>
         <a href="#service">Service</a>
         <a href="#menu">Menu</a>
@@ -1073,7 +1063,7 @@
 
       <a href="#contact" class="btn btn-primary">Book the Mobile Bar</a>
 
-      <button type="button" class="menu-toggle" aria-label="Toggle menu" aria-controls="main-nav">
+      <button type="button" class="menu-toggle" aria-label="Open menu" aria-controls="main-nav" aria-expanded="false">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
@@ -1107,18 +1097,6 @@
       <button type="button" class="sticky-fab" id="sticky-fab" aria-label="Open daily note" aria-expanded="false" aria-controls="sticky-popover">
         <span class="sticky-fab-icon" aria-hidden="true">📝</span>
       </button>
-      <div class="sticky-popover" id="sticky-popover" role="dialog" aria-label="Daily note" hidden>
-        <button type="button" class="sticky-popover-close" id="sticky-popover-close" aria-label="Close">×</button>
-        <div class="sticky-popover-inner">
-          <div class="hero-sticky-date">
-            <span aria-hidden="true">📅</span> <span id="hero-sticky-date-text-mobile">Today</span>
-          </div>
-          <p class="hero-sticky-content" id="hero-sticky-message-mobile"></p>
-          <div class="hero-sticky-footer">the editor</div>
-        </div>
-      </div>
-
-
       <div class="container">
         <div class="hero-content">
           <p class="hero-tag">Premium Mobile Bar · Kenya</p>
@@ -1130,6 +1108,42 @@
           </div>
 
         </div>
+      </div>
+    </section>
+
+    <!-- Kinetic scroll reel -->
+    <section class="k-pin" id="reel" aria-label="A night with Pour Poa">
+      <div class="k-pin-sticky">
+        <div class="k-pin-top">
+          <p class="k-eyebrow">Keep scrolling</p>
+          <h2 class="k-pin-title">The night, poured in frames.</h2>
+        </div>
+        <div class="k-viewport">
+          <div class="k-track" id="k-track">
+            <figure class="k-card">
+              <div class="k-card-media"><img src="images/occasion-weddings.jpg" alt="A wedding mobile bar" loading="lazy" decoding="async" /></div>
+              <figcaption><span>01</span><em>The toast</em></figcaption>
+            </figure>
+            <figure class="k-card">
+              <div class="k-card-media"><img src="images/menu-hibiscus-sunset.jpg" alt="Hibiscus sunset cocktail" loading="lazy" decoding="async" /></div>
+              <figcaption><span>02</span><em>The colour</em></figcaption>
+            </figure>
+            <figure class="k-card">
+              <div class="k-card-media"><img src="images/service-bartender.jpg" alt="Bartender at the mobile bar" loading="lazy" decoding="async" /></div>
+              <figcaption><span>03</span><em>The service</em></figcaption>
+            </figure>
+            <figure class="k-card">
+              <div class="k-card-media"><img src="images/occasion-private.jpg" alt="Private celebration" loading="lazy" decoding="async" /></div>
+              <figcaption><span>04</span><em>The room</em></figcaption>
+            </figure>
+            <figure class="k-card">
+              <div class="k-card-media"><img src="images/menu-mango-chilli.jpg" alt="Mango chilli cocktail" loading="lazy" decoding="async" /></div>
+              <figcaption><span>05</span><em>The last pour</em></figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="k-rail" aria-hidden="true"><span id="k-rail-fill"></span></div>
+        <p class="k-pin-hint" aria-hidden="true">Scroll to pour</p>
       </div>
     </section>
 
@@ -1319,13 +1333,13 @@
           <p>A taste of what we pour. Full menus are tailored to your event.</p>
         </div>
 
-        <div class="menu-tabs">
-          <button type="button" class="menu-tab active" data-tab="signature">Signature Cocktails</button>
-          <button type="button" class="menu-tab" data-tab="brunch">Brunch Cocktails</button>
-          <button type="button" class="menu-tab" data-tab="mocktails">Craft Mocktails</button>
+        <div class="menu-tabs" role="tablist" aria-label="Menu categories">
+          <button type="button" class="menu-tab active" role="tab" id="menu-tab-signature" aria-controls="panel-signature" aria-selected="true" data-tab="signature">Signature Cocktails</button>
+          <button type="button" class="menu-tab" role="tab" id="menu-tab-brunch" aria-controls="panel-brunch" aria-selected="false" tabindex="-1" data-tab="brunch">Brunch Cocktails</button>
+          <button type="button" class="menu-tab" role="tab" id="menu-tab-mocktails" aria-controls="panel-mocktails" aria-selected="false" tabindex="-1" data-tab="mocktails">Craft Mocktails</button>
         </div>
 
-        <div class="menu-panel active" id="panel-signature">
+        <div class="menu-panel active" id="panel-signature" role="tabpanel" aria-labelledby="menu-tab-signature">
         <article class="mx-card mx-card--hero">
           <figure class="mx-media">
             <img src="images/menu-kenyan-sour.jpg" alt="Kenyan Sour in a coupe glass with a pale foam crown" loading="lazy" decoding="async" onerror="this.style.display='none'" />
@@ -1409,7 +1423,7 @@
         </article>
         </div>
 
-        <div class="menu-panel" id="panel-brunch">
+        <div class="menu-panel" id="panel-brunch" role="tabpanel" aria-labelledby="menu-tab-brunch">
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-classic-mimosa.jpg" alt="Classic Mimosa in a champagne flute" loading="lazy" decoding="async" onerror="this.style.display='none'" />
@@ -1452,7 +1466,7 @@
         </article>
         </div>
 
-        <div class="menu-panel" id="panel-mocktails">
+        <div class="menu-panel" id="panel-mocktails" role="tabpanel" aria-labelledby="menu-tab-mocktails">
         <article class="mx-card">
           <figure class="mx-media">
             <img src="images/menu-sunrise-cooler.jpg" alt="Sunrise Cooler mocktail in a highball glass" loading="lazy" decoding="async" onerror="this.style.display='none'" />
@@ -1594,11 +1608,11 @@
         <div class="feedback-panel filigree" data-anim>
           <div class="feedback-copy">
             <h2 id="feedback-heading">How did we pour?</h2>
-            <p>Your feedback helps us keep the experience focused and precise. Tell us what worked and what could be better.</p>
+            <p>Your feedback helps us keep the experience focused and precise. Tell us what worked and what could be better. It opens WhatsApp with your ratings ready to send.</p>
           </div>
           <div class="feedback-action">
             <div class="feedback-stars" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg></div>
-            <p class="meta">Five quick ratings and two optional notes.</p>
+            <p class="meta">Five quick ratings and two optional notes, sent on WhatsApp.</p>
             <button type="button" id="open-feedback" class="btn btn-primary btn-lg">Leave Feedback</button>
           </div>
         </div>
@@ -1630,15 +1644,15 @@
             <div class="q-grid">
               <div class="q-field">
                 <label for="enq-name">Name *</label>
-                <input class="q-input" type="text" id="enq-name" name="name" required autocomplete="name" placeholder="Your name" />
+                <input class="q-input" type="text" id="enq-name" name="name" required autocomplete="name" autocapitalize="words" enterkeyhint="next" placeholder="Your name" />
               </div>
               <div class="q-field">
                 <label for="enq-phone">Phone / WhatsApp *</label>
-                <input class="q-input" type="tel" id="enq-phone" name="phone" required autocomplete="tel" placeholder="07XX XXX XXX" />
+                <input class="q-input" type="tel" id="enq-phone" name="phone" required autocomplete="tel" inputmode="tel" enterkeyhint="next" placeholder="07XX XXX XXX" />
               </div>
               <div class="q-field q-full">
                 <label for="enq-email">Email</label>
-                <input class="q-input" type="email" id="enq-email" name="email" autocomplete="email" placeholder="you@email.com" />
+                <input class="q-input" type="email" id="enq-email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" enterkeyhint="next" placeholder="you@email.com" />
               </div>
               <div class="q-field">
                 <label for="enq-date">Event Date *</label>
@@ -1646,15 +1660,15 @@
               </div>
               <div class="q-field">
                 <label for="enq-location">Location *</label>
-                <input class="q-input" type="text" id="enq-location" name="location" required placeholder="Nairobi / surrounding areas" />
+                <input class="q-input" type="text" id="enq-location" name="location" required autocomplete="street-address" enterkeyhint="next" placeholder="Nairobi / surrounding areas" />
               </div>
               <div class="q-field">
                 <label for="enq-guests">Guest Count *</label>
-                <input class="q-input" type="number" id="enq-guests" name="guests" min="10" required inputmode="numeric" placeholder="e.g. 80" />
+                <input class="q-input" type="number" id="enq-guests" name="guests" min="10" required inputmode="numeric" enterkeyhint="next" placeholder="e.g. 80" />
               </div>
               <div class="q-field">
                 <label for="enq-duration">Duration (hours)</label>
-                <input class="q-input" type="number" id="enq-duration" name="duration" min="2" max="12" inputmode="numeric" placeholder="e.g. 5" />
+                <input class="q-input" type="number" id="enq-duration" name="duration" min="2" max="12" inputmode="numeric" enterkeyhint="next" placeholder="e.g. 5" />
               </div>
 
               <fieldset class="q-field q-full">
@@ -1723,8 +1737,20 @@
     </div>
   </footer>
 
+  <!-- Daily note popover (phones). Lives at body level so it stacks above the header. -->
+  <div class="sticky-popover" id="sticky-popover" role="dialog" aria-label="Daily note" hidden>
+    <div class="sticky-popover-inner">
+      <button type="button" class="sticky-popover-close" id="sticky-popover-close" aria-label="Close">×</button>
+      <div class="hero-sticky-date">
+        <span aria-hidden="true">📅</span> <span id="hero-sticky-date-text-mobile">Today</span>
+      </div>
+      <p class="hero-sticky-content" id="hero-sticky-message-mobile"></p>
+      <div class="hero-sticky-footer">the editor</div>
+    </div>
+  </div>
+
   <!-- Feedback Modal -->
-  <div class="modal-overlay" id="feedback-modal">
+  <div class="modal-overlay" id="feedback-modal" data-lenis-prevent>
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="feedback-title">
       <button type="button" class="modal-close" id="close-feedback" aria-label="Close">×</button>
       <span class="ornament modal-ornament" aria-hidden="true"></span>
@@ -1789,8 +1815,12 @@
     <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.672-1.64-.922-2.206-.242-.579-.487-.5-.672-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
-  <script src="js/main.js?v=6" defer></script>
-  <script src="js/mobile.js?v=1" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+  <script src="js/main.js?v=7" defer></script>
+  <script src="js/mobile.js?v=2" defer></script>
+  <script src="js/kinetic.js?v=3" defer></script>
 
   <script>
     /* Estimator: fills the slider track up to the thumb (Chrome/Safari); Firefox does this natively */
@@ -1864,30 +1894,21 @@
   </script>
 
   <script>
-    /* Scroll reveal for [data-anim] (CSS in css/luxury.css). Elements that enter together are staggered 90ms apart. */
-    (function () {
+    /* Fallback reveal if GSAP kinetic layer does not run */
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.__pourKinetic) return;
       var items = document.querySelectorAll('[data-anim]');
       if (!items.length) return;
       if (!document.documentElement.classList.contains('anim-ready')) return;
-
       var io = new IntersectionObserver(function (entries) {
-        var batch = entries.filter(function (e) { return e.isIntersecting; })
-          .sort(function (a, b) {
-            return (a.boundingClientRect.top - b.boundingClientRect.top) ||
-                   (a.boundingClientRect.left - b.boundingClientRect.left);
-          });
-        batch.forEach(function (entry, i) {
-          var el = entry.target;
-          if (!el.style.getPropertyValue('--d')) {
-            el.style.setProperty('--d', (Math.min(i, 5) * 0.09).toFixed(2) + 's');
-          }
-          el.classList.add('is-in');
-          io.unobserve(el);
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-
       items.forEach(function (el) { io.observe(el); });
-    })();
+    });
   </script>
 </body>
 </html>

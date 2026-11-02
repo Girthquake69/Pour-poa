@@ -8,6 +8,48 @@
 /* Slideshow container exists in the markup but is phone-only */
 .hero-slides { display: none; }
 
+/* ==========================================================================
+   Platform layer: applies at every width, because tablets and touch laptops
+   have the same finger-shaped problems as phones. Capability queries only,
+   no device sniffing.
+   ========================================================================== */
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* no 300ms double-tap wait on anything tappable */
+a, button, [role="button"], label.q-chip, label.package-option, .menu-tab, .occ-tab {
+  touch-action: manipulation;
+}
+
+/* controls are not content: no text selection or callout on long-press */
+button, [role="button"], .btn, .occ-tab, .menu-tab, .q-chip span, .package-option,
+.menu-toggle, .sticky-fab, .stars button, .wa-float {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* overlays keep their own scroll; the page behind never chains */
+.modal-overlay, .sticky-popover, .header .nav {
+  overscroll-behavior: contain;
+}
+
+/* the open phone menu is a full sheet: nothing floats over it */
+body:has(.nav.open) .wa-float { opacity: 0; visibility: hidden; pointer-events: none; }
+
+@media (pointer: coarse) {
+  /* iOS zooms the page when a field under 16px takes focus */
+  input, textarea, select { font-size: max(1rem, 16px); }
+
+  /* 44px floor for every tappable thing that was sized for a mouse */
+  .nav a, .footer a, .text-link, .quote-wa a { min-height: 2.75rem; display: inline-flex; align-items: center; }
+  .logo { min-height: 2.75rem; }
+  .estimator-box input[type="range"] { height: 2.75rem; }
+}
+
 @media (max-width: 47.99rem) {
 
   /* ---------- Tokens ---------- */
@@ -313,7 +355,7 @@
   #bespoke .bespoke-head .ornament { width: 6rem; margin: 0 0 1.5rem; }
   .bespoke-list { display: grid; gap: 0; margin-top: 2rem; }
   .bespoke-item { min-height: 4rem; padding: 0.875rem 0; gap: 1rem; border-radius: 0; background: transparent; box-shadow: none; }
-  #bespoke .bespoke-cta { display: grid; align-items: stretch; flex-direction: column; justify-items: stretch; gap: 0.5rem; margin-top: 2rem; text-align: left; }
+  #bespoke .bespoke-cta { display: grid; grid-template-columns: minmax(0, 1fr); justify-content: stretch; align-items: stretch; justify-items: stretch; gap: 0.5rem; margin-top: 2rem; text-align: left; }
   .bespoke-cta .btn { width: 100%; max-width: none; min-height: 3.25rem; }
   .bespoke-cta .text-link { justify-self: start; display: inline-flex; align-items: center; min-height: 2.75rem; }
 
@@ -391,4 +433,13 @@
   .modal { width: 100%; max-width: none; max-height: 92dvh; overflow-y: auto; border-radius: var(--r-surface) var(--r-surface) 0 0; padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)); }
   .stars button { min-width: 2.75rem; min-height: 2.75rem; }
   .modal input, .modal textarea, .modal select { font-size: 1rem; }
+}
+
+/* Daily-note popover: the close button belongs to the note, with a real 44px target */
+.sticky-popover-close {
+  top: 0;
+  right: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 1.6rem;
 }

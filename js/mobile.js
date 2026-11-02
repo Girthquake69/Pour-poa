@@ -1,8 +1,14 @@
 /* Pour Poa — phone helpers: keep the chosen tab in view inside its scroller */
 (function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
   document.addEventListener('click', function (e) {
     var tab = e.target.closest && e.target.closest('.occ-tab, .menu-tab');
-    if (tab && tab.scrollIntoView) tab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+    if (!tab) return;
+    var box = tab.parentElement;
+    if (!box || box.scrollWidth <= box.clientWidth + 1) return;
+    // centre the tab inside its own row; scrollIntoView would also nudge the page vertically
+    var left = box.scrollLeft + (tab.getBoundingClientRect().left - box.getBoundingClientRect().left) - (box.clientWidth - tab.offsetWidth) / 2;
+    box.scrollTo({ left: Math.max(0, left), behavior: reduce.matches ? 'auto' : 'smooth' });
   });
 })();
 

@@ -172,7 +172,10 @@ h1, h2, h3 {
   transition: color 160ms var(--ease-out);
 }
 
-.hero-trust a:hover { color: #fff; }
+@media (hover: hover) and (pointer: fine) {
+  .hero-trust a:hover { color: #fff; }
+
+}
 
 /* ---------- 6. Craft + service polish (tonal cards on the lighter cream) ---------- */
 
@@ -331,9 +334,12 @@ h1, h2, h3 {
   transition: color 160ms var(--ease-out), text-decoration-color 160ms var(--ease-out);
 }
 
-.text-link:hover {
-  color: var(--bronze);
-  text-decoration-color: var(--bronze);
+@media (hover: hover) and (pointer: fine) {
+  .text-link:hover {
+    color: var(--bronze);
+    text-decoration-color: var(--bronze);
+  }
+
 }
 
 /* ---------- 9. Estimator polish ---------- */
@@ -679,7 +685,6 @@ h1, h2, h3 {
   z-index: 5;
 }
 
-
 /* Force centered feedback layout (overrides earlier grid) */
 #feedback .feedback-panel {
   display: flex !important;
@@ -705,12 +710,10 @@ h1, h2, h3 {
   justify-content: center;
 }
 
-
 /* ---------- Full-viewport opening hero + refined mobile layout ---------- */
 .hero {
   min-height: 100vh;
-  min-height: 100svh;
-  min-height: 100dvh;
+  min-height: 100svh;   /* svh: a hero must not resize while the URL bar collapses */
   box-sizing: border-box;
 }
 
@@ -719,10 +722,8 @@ h1, h2, h3 {
   .hero {
     height: 100vh;
     height: 100svh;
-    height: 100dvh;
     min-height: 100vh;
     min-height: 100svh;
-    min-height: 100dvh;
     padding-top: calc(var(--header-h, 4.75rem) + env(safe-area-inset-top, 0px));
     padding-bottom: max(0.85rem, env(safe-area-inset-bottom, 0px));
     align-items: center;
@@ -823,6 +824,8 @@ h1, h2, h3 {
   /* Preserve the small floating sticker and its expandable note on mobile. */
   .sticky-fab {
     display: flex !important;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     top: calc(env(safe-area-inset-top, 0px) + 8.25rem);
     right: 1rem;
@@ -844,7 +847,6 @@ h1, h2, h3 {
   }
 }
 
-
 /* Final mobile hero refinements: fixed sticker, cocktail visual, no bottom trust bullets. */
 .hero-trust { display: none !important; }
 @media (max-width: 47.99rem) {
@@ -861,7 +863,7 @@ h1, h2, h3 {
   .hero {
     position: relative;
     isolation: isolate;
-    background-image: linear-gradient(180deg, rgba(4, 25, 19, .25), rgba(4, 25, 19, .94) 58%), url('../images/menu-berry-basil-smash.jpg'), url('../images/background.png') !important;
+    background-image: linear-gradient(180deg, rgba(4, 25, 19, .25), rgba(4, 25, 19, .94) 58%), url('../images/menu-berry-basil-smash.jpg'), url('../images/background.webp') !important;
     background-size: cover, min(100%, 34rem) auto, cover !important;
     background-position: center, center 15%, center !important;
     background-repeat: no-repeat !important;
